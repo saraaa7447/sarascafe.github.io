@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+	<head>
+		<title>ScarlettPPC's Cafe</title>
+		<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="me" href="https://tech.lgbt/@scarlett7447" />
+	</head>
+	<body>
+	<div id="container">
+		<div id="header">
+			<h1>Welcome to</h1>
+			<img src="../banner.png" alt="ScarlettPPC's Website" />
+		</div>
+		<hr />
+		<div id="nav">
+			<h3>
+				<a href="../index.html">
+   					<button type="button">Home</button>
+				</a>
+				<a href="../tutorials.html">
+					<button class="selected" type="button">Guides</button>
+				</a>
+				<a href="../blog.html">
+					<button type="button">Blog</button>
+				</a>
+				<a href="../hobbies.html">
+					<button type="button">My Hobbies</button>
+				</a>
+				<a href="../projects.html">
+					<button type="button">Projects</button>
+				</a>
+				<a href="../about.html">
+					<button type="button">About Me</button>
+				</a>
+			</h3>
+			<hr />
+		</div>
+		<div id="title">
+		<h2>Using an iOS 9 device in 2024</h2>
+		</div>
+		<div id="content">
+			<p> A couple of weeks ago I got an iPad 2, a white 3G+WiFi 16 GB for 10 euro. I've never had one before and was actually planning to buy an older one like this. Of course, it came with iOS 9.3.5. It runs it a little slow but nothing unbearable. I decided to jailbreak it and see how much I can push it to perform tasks you might do on your modern tablet or phone. In the end, I was pleasantly surprised as I could do everything I did on my main phone - which is browsing social media like Twitter and Reddit, watching YouTube videos, chatting on Discord (voice calls as well!) and something the new devices can't do - playing old games. </p>
+			<p> Of course, to do most of these you need to jailbreak the device. I'll be detailing how I did it as well as how I got most apps working using patches. </p>
+
+			<h4> Jailbreaking: </h4>
+			<p> I used Phoenix Jailbreak which is semi-untethered, meaning every time you restart the device you will need to jailbreak it again. To sideload the ipa to the device, I used an application called Sideloadly. Links for both: </p>
+			<a href="https://sideloadly.io/" target="_blank"> Sideloadly </a>
+			<br /> <a href="https://phoenixpwn.com/" target="_blank"> Phoenix </a> 
+			<br />
+			<p> Install Sideloadly, connect your device to your computer, open the app and drag the Phoenix ipa to it. After that you'll have to sign in with an Apple ID account. You don't have to use your main one, I made another just for this. After that, start the operation and follow any instructions the app shows. <br />
+After it's done the Phoenix app should appear on your home screen. Open the app and follow the instructions to jailbreak your device. When that's done the device might restart. After it finishes, install Cydia from the app. And that's it! If you've done everything right, your device should be jailbroken now!  </p>
+			<br />
+			<h4> Installing apps from the App Store: </h4>
+			<p> The easiest way to install apps for iOS 9 is from the App Store. Sign in with your main Apple ID and install the apps you already own, this will prompt you to install an older version if available. If you don't own an application, you can install it on a newer device, then delete it and it should appear in your "Purchased" tab. There is also a patch that bypasses the "Incompatible app version" error if you don't own the app called "Checkmate, Store!" by InvoxiPlayGames but I couldn't get it to work. </p>
+			<br />
+			<h4> Installing IPAs with Filza: </h4>
+			<p> Install Filza and AppSync Unified from Cydia. Now, you need to download IPAs. You can do that straight from your iDevice by navigating to a site that hosts them, I have one linked below. After that, copy the url of the location of the file and open Filza, press the clipboard icon and paste link. It should start downloading, but it might be slow if you're pulling from archive.org. After it's done, tap on the file and install. When that's done, restart your device and jailbreak again. The app should now work. </p>
+			<a href="https://archive.org/details/iOSObscura"> iOSObscura </a> <br />
+			
+			<h4> Bypassing Google Sign-In restriction: </h4>
+			<p> Google has introduced a check that prevents you from logging in on older devices. I spent 2 days looking for days to bypass it and finally found a solution. <br />
+Download YouTube kids and sign in with your Google account. This is the only app I'm aware of that doesn't block iOS 9. After that all of your other Google apps like YouTube should prompt you to log in your account that you used. </p>
+			<br />
+			<h4> Downgrading apps: </h4>
+			<p> Install App Admin and then open the App Store, go to the desired app and hold the "Open" button until a menu appears. Press "Downgrade" and then add the version you need to the "Known versions". </p>
+			<br />
+			<h4> Editing app version values: </h4>
+			<p> Install Filza, then navigate to /private/var/containers/Bundle/Application/ </p>
+			<p> All of the user-installed applications will be here. </p>
+			<p> To change the version open one, open the .app folder and find Info.plist. Open it and edit the values named "CFBundleShortVersionString" and "CFBundleVersion" to the desired version. Keep in mind this will only make the app think it's that version and not actually update, you still have the latest compatible one but it's just pretending to be newer. </p>
+			<br />
+			<h4> Tested applications: </h4>
+			<p>
+			YouTube - broken, can be made to semi-work by changing the Info.plist version to 16.42.10
+			<br /> Discord - works with the DiscOld patch from InvoxiPlayGames' beta repo
+			<br /> Spotify - works, use your email when logging in
+			<br /> Twitter - semi-works
+			<br /> Reddit - iOS 9 version is broken, downgrade to version 821375001, log in and update to the latest supported one again
+			<br /> Gmail - works
+			<br /> Among Us - crashes
+			</p>
+			<br />
+			<h4> Cydia source repositories: </h4>
+			<p> http://cydia.akemi.ai/
+			<br /> http://cydia.invoxiplaygames.uk/
+			<br /> http://cydia.invoxiplaygames.uk/beta/
+			<br /> http://repo.mtmdev.org/
+			<br /> http://cydia.saurik.com/
+			</p>
+		</div>
+		<div id="footer">
+			<hr />
+			
+			<img src="../poweredbymacosxserver.gif" alt="Powered by Mac OS X Server" />
+			<img src="../macmade.gif" alt="Made with Mac OS" />
+			<img src="../apache_pb.gif" alt="Powered by Apache" />
+
+			
+			<p>Copyright &copy; <script type="text/javascript">document.write( new Date().getFullYear() );</script> ScarlettPPC</p>
+		</div>
+	</div>
+	</body>
+</html>

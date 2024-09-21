@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+	<head>
+		<title>ScarlettPPC's Cafe</title>
+		<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="me" href="https://tech.lgbt/@scarlett7447" />
+	</head>
+	<body>
+	<div id="container">
+		<div id="header">
+			<h1>Welcome to</h1>
+			<img src="../banner.png" alt="ScarlettPPC's Website" />
+		</div>
+		<hr />
+		<div id="nav">
+			<h3>
+				<a href="../index.html">
+   					<button type="button">Home</button>
+				</a>
+				<a href="../tutorials.html">
+					<button class="selected" type="button">Guides</button>
+				</a>
+				<a href="../blog.html">
+					<button type="button">Blog</button>
+				</a>
+				<a href="../hobbies.html">
+					<button type="button">My Hobbies</button>
+				</a>
+				<a href="../projects.html">
+					<button type="button">Projects</button>
+				</a>
+				<a href="../about.html">
+					<button type="button">About Me</button>
+				</a>
+			</h3>
+			<hr />
+		</div>
+		<div id="title">
+		<h2>A guide for using Void Linux on PowerPC</h2>
+		</div>
+		<div id="content">
+			<h4> IMPORTANT - Void Linux PowerPC is no longer maintained. The official website and repository are down. If you want to keep XBPS working, point it to this mirror instead of the official repo - https://mirrors.servercentral.com/void-ppc/ </h4>
+			<h4> Check out my Void Linux handbook! It's quite a bit more detailed and a lot of the info from there also applies to PowerPC. </h4>
+			<center><a href="voidlinuxhandbook.html" target="_blank">
+					<button type="button">VoidLinux Handbook</button>
+				</a>
+			<a href="https://voidlinux-ppc.org/" target="_blank"><button type="button">The VoidLinuxPPC Website (no longer works)</button></a></center>
+
+
+			<h3 class="specialtwo"> Installing Void Linux </h3>
+			<p> Since the site and repos are down, you can still get the images from the Internet Archive here: </p> 
+			<center><a href="https://web.archive.org/web/20230326071003/https://repo.voidlinux-ppc.org/live/current/" target="_blank"> 
+			<button type="button">Void Linux ISOs</button>
+			</a></center>
+			<p> For installing I would recommend following the documentation provided in their website. It is very good.</p>
+			<h3 class="specialtwo"> Post-Installation </h3>
+			<p> After installing there are several things you need to do. First of all log in as root and type "xbps-install -Su", this is for keeping the system up to date. </p>
+			<p> If you're planning to use sudo, type "visudo" and scroll down to the bottom until you find "#Defaults targetpw" and "#ALL ALL=(ALL) ALL". Uncomment them by removing the # (press the delete key, not backspace,
+ if you're on a portable device like the iBook or PowerBook then press fn+backspace). Uncomment both lines and then type ":wq". Now you can log in as your user account by doing "su [name]" and then change the directory by typing "cd ~" </p>
+			<p> If you're on a portable device install pbbuttonsd and mouseemu. To do this type "sudo xbps-install pbbuttonsd mouseemu", press y and enter if prompted. After that type "sudo ln -s /etc/sv/mouseemu /var/service" and "sudo ln -s /etc/sv/pbbuttonsd /var/service".
+			Next start the services with "sudo sv up pbbuttonsd" "sudo sv up mouseemu". </p>
+			<p> These are for getting the function keys working and for emulating right & middle click and scrolling. Scrolling is done with the Alt/Option key and right and middle click are F10 and F11 </p>
+			<h3 class="specialtwo"> Installing a Window Manager/Desktop Environment </h3>
+			<p> First install xorg by doing "sudo xbps-install xorg". Wait for that to install and then install your favourite WM/DE. I would suggest starting with XFCE4 since it's really simple to use. To install it type "sudo xbps-install xfce4" and after it's installed type "startxfce4". </p>
+			<h3 class="specialtwo"> Getting Audio working </h3>
+			<p> Install alsa-utils, pnmixer and qastools with xbps-install. Open a terminal and type "qasmixer". If you're getting errors that it can't find a mixer type "sudo modprobe snd_powermac" and relaunch it. Look for the PCM slider and slide it to around 70%. Put Bass and Treble to 50% and Master to something like 60%. </p>
+			<h3 class="specialtwo"> Getting wireless working and installing Network Manager </h3>
+			<p> For wireless networking you will need to set up the void-packages source collection.
+			The commands in order are <br />
+			# xbps-install base-devel git <br />
+			$ git clone https://github.com/void-ppc/void-packages.git <br />
+			$ cd void-packages <br />
+			$ ./xbps-src binary-bootstrap <br />
+			$ echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf <br />
+			</p>
+			<p> After this you will need to find out which AirPort card you have. To do this run: <br />
+			$ lspci | grep Wireless <br />
+			If you card is either a BCM4306 rev.3, BCM4311, BCM4312 or BCM4318 rev.2, you should use b43-firmware-classic. If you have a BCM4331, you should use b43-firmware. In other cases, you should probably be able to use either. </p>
+			<p> Build the appropriate package: <br />
+			$ ./xbps-src pkg b43-firmware <br />
+			or <br />
+			$ ./xbps-src pkg b43-firmware-classic </p>
+			<p> Install the package: <br />
+			# xbps-install -R hostdir/binpkgs/nonfree b43-firmware <br />
+			or <br />
+			# xbps-install -R hostdir/binpkgs/nonfree b43-firmware-classic </p>
+			<h3 class="specialtwo"> Installing a web browser </h3>
+			<p> TODO </p>
+		</div>
+		<div id="footer">
+			<hr />
+			
+			<img src="../poweredbymacosxserver.gif" alt="Powered by Mac OS X Server" />
+			<img src="../macmade.gif" alt="Made with Mac OS" />
+			<img src="../apache_pb.gif" alt="Powered by Apache" />
+
+			
+			<p>Copyright &copy; <script type="text/javascript">document.write( new Date().getFullYear() );</script> ScarlettPPC</p>
+		</div>
+	</div>
+	</body>
+</html>

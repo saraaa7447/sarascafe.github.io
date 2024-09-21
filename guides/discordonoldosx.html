@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+	<head>
+		<title>ScarlettPPC's Cafe</title>
+		<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="me" href="https://tech.lgbt/@scarlett7447" />
+	</head>
+	<body>
+	<div id="container">
+		<div id="header">
+			<h1>Welcome to</h1>
+			<img src="../banner.png" alt="ScarlettPPC's Website" />
+		</div>
+		<hr />
+		<div id="nav">
+			<h3>
+				<a href="../index.html">
+   					<button type="button">Home</button>
+				</a>
+				<a href="../tutorials.html">
+					<button class="selected" type="button">Guides</button>
+				</a>
+				<a href="../blog.html">
+					<button type="button">Blog</button>
+				</a>
+				<a href="../hobbies.html">
+					<button type="button">My Hobbies</button>
+				</a>
+				<a href="../projects.html">
+					<button type="button">Projects</button>
+				</a>
+				<a href="../about.html">
+					<button type="button">About Me</button>
+				</a>
+			</h3>
+			<hr />
+		</div>
+		<div id="title">
+		<h2>Fix Discord for Mac OS 10.13 and 10.14</h2>
+		</div>
+		<div id="content">
+			<p>This tutorial works for Discord Stable, PTB, Canary and for older versions of Mac OS as long as you have/know the last supported version! <br />
+			<br />
+			Yesterday, on Jan 22 2024, my Discord Canary updated to the newest version - 0.0.396 which is no longer compatible with my Mac OS version and requires 10.15 Catalina. <br />
+			<br />
+			Of course, I can always use the web version instead but the app is more handy so I found a way to keep it working. <br />
+			<br />
+			First if your Discord app has already updated and won't open, you'll need to remove it and its data using another application called "AppCleaner" which is free. I have provided links directly to Discord's official website for working versions of each client build which you can find below this. Use them to install the client.
+			</p>
+				<center><a href="https://dl.discordapp.net/apps/osx/0.0.272/Discord.dmg" target="_blank"><button type="button">Discord<br /><small>0.0.272</small></button></a>
+				<a href="https://dl-ptb.discordapp.net/apps/osx/0.0.100/DiscordPTB.dmg" target="_blank"><button type="button">DiscordPTB<br /><small>0.0.100</small></button></a>
+				<a href="https://dl-canary.discordapp.net/apps/osx/0.0.394/DiscordCanary.dmg" target="_blank"><button type="button">Discord Canary<br /><small>0.0.394</small></button></a></center>
+			<p>
+			Move the application to the App folder. Now, for the next part you'll need to disconnect your Mac from the internet. <br />
+			<br />
+			Open the app so it creates the necessary files and then when it fails to update - quit it. <br />
+			<br />
+			After this in a Finder window press Command + Shift + G and type "~/Library/Application Support/" then press Enter. Look for and open the appropriate folder (discord, discordptb, discordcanary).Open settings.json with Text Edit and add "SKIP_HOST_UPDATE": true at the end before the final closing bracket like in the image attached below. Don't forget to add a comma before it. This disables the auto updater. <br />
+			<br />
+			And that's it! I basically tried a bunch of different stuff hastily and it worked in the end so I'm not complaining.</p>
+			<center><img src="discordpatch.png" alt="settings.json patch to disable auto-updater as explained before the image." /></center>
+		</div>
+		<div id="footer">
+			<hr />
+			
+			<img src="../poweredbymacosxserver.gif" alt="Powered by Mac OS X Server" />
+			<img src="../macmade.gif" alt="Made with Mac OS" />
+			<img src="../apache_pb.gif" alt="Powered by Apache" />
+
+			
+			<p>Copyright &copy; <script type="text/javascript">document.write( new Date().getFullYear() );</script> ScarlettPPC</p>
+		</div>
+	</div>
+	</body>
+</html>

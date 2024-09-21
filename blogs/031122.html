@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+	<head>
+		<title>ScarlettPPC's Cafe</title>
+		<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="me" href="https://tech.lgbt/@scarlett7447" />
+	</head>
+	<body>
+	<div id="container">
+		<div id="header">
+			<h1>Welcome to</h1>
+			<img src="../banner.png" alt="ScarlettPPC's Website" />
+		</div>
+		<hr />
+		<div id="nav">
+			<h3>
+				<a href="../index.html">
+   					<button type="button">Home</button>
+				</a>
+				<a href="../tutorials.html">
+					<button type="button">Guides</button>
+				</a>
+				<a href="../blog.html">
+					<button class="selected" type="button">Blog</button>
+				</a>
+				<a href="../hobbies.html">
+					<button type="button">My Hobbies</button>
+				</a>
+				<a href="../projects.html">
+					<button type="button">Projects</button>
+				</a>
+				<a href="../about.html">
+					<button type="button">About Me</button>
+				</a>
+			</h3>
+			<hr />
+		</div>
+		<div id="title">
+		<h2>03/11/2022 - Using Void Linux as a daily OS + Spotify?</h2>
+		</div>
+		<div id="content">
+			<p> I've been trying various Linux distros for a while but most of the time I had no idea what I was doing, so I decided to give Void another chance. I've been trying to get Gentoo working and had successfully
+installed it but I just couldn't get Xorg to start and after several weeks of messing around I decided it was too complicated for me. I had been looking at various Window Manager to try since I wanted to customize the OS to my liking and
+stopped on CTWM (Claude's Tab Window Manager), it seemed pretty good for what I needed. I installed Void on my Windows machine first, replacing Linux Mint 19.1 that I wasn't using anymore and got to work. I started learning how the OS worked
+ and how to do basic things. I got CTWM installed and several other applications that I needed to make the OS actually useful. I will make a new guide and share my findings in greater detail there. </p>
+			<p> I took a break and booted up Void on my Power Mac G5 (DC 2.3 GHz, NVIDIA GeForce 6600) and was browsing the repos when I found that it had spotifyd and spotify-tui. I decided to see what they are and it turns out
+one is a CLI client that is more like a remote control and doesn't play sound and the other is a daemon that plays the music. Both of them make for a fully functional client. I decided to give it a try. I set both of them up and their configuration files 
+(just by following the instructions on the GitHub pages, they were pretty straight forward) and then started both. Now it was the moment to try if they worked... I chose an album, pressed play and.... static. That's all I could hear - very loud static.
+I was disappointed but didn't give up because the pattern sometimes changed and I could faintly hear something resembling music. I went to spotifyd's config file and started messing with the settings. Finally I got to a setting called 
+"normalisation_pregain = -10". I changed the value and that actually changed the static a little. I tried several and then set it to "-60", I restarted spotifyd and.... it worked! The music was playing nicely. </p>
+			<p> I was happy and got Void installed on the 17" PowerBook and there were several problems I had to fix before but it worked there too! I'll be talking about them in more detail in the guide. </p>
+			<center><img src="voidspotify.png" width="720" height="450" alt="Screenshot of PowerBook showing spotify-tui playing music" /></center>
+		</div>
+		<div id="footer">
+			<hr />
+			
+			<img src="../poweredbymacosxserver.gif" alt="Powered by Mac OS X Server" />
+			<img src="../macmade.gif" alt="Made with Mac OS" />
+			<img src="../apache_pb.gif" alt="Powered by Apache" />
+
+			
+			<p>Copyright &copy; <script type="text/javascript">document.write( new Date().getFullYear() );</script> ScarlettPPC</p>
+		</div>
+	</div>
+	</body>
+</html>

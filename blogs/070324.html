@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+	<head>
+		<title>ScarlettPPC's Cafe</title>
+		<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="me" href="https://tech.lgbt/@scarlett7447" />
+	</head>
+	<body>
+	<div id="container">
+		<div id="header">
+			<h1>Welcome to</h1>
+			<img src="../banner.png" alt="ScarlettPPC's Website" />
+		</div>
+		<hr />
+		<div id="nav">
+			<h3>
+				<a href="../index.html">
+   					<button type="button">Home</button>
+				</a>
+				<a href="../tutorials.html">
+					<button type="button">Guides</button>
+				</a>
+				<a href="../blog.html">
+					<button class="selected" type="button">Blog</button>
+				</a>
+				<a href="../hobbies.html">
+					<button type="button">My Hobbies</button>
+				</a>
+				<a href="../projects.html">
+					<button type="button">Projects</button>
+				</a>
+				<a href="../about.html">
+					<button type="button">About Me</button>
+				</a>
+			</h3>
+			<hr />
+		</div>
+		<div id="title">
+		<h2>07/03/2024 2008 Mac Pro Upgrade Adventure over the years</h2>
+		</div>
+		<div id="content">
+			<p>When I originally got my 2008 Mac Pro, it was the lowest end model and I since then have been meaning to upgrade it. Even then it was still pretty fast but I wanted to squeeze more out of it. The specs when I got it were single 2.8 GHz Xeon, 6 GB of RAM (factory configuration), no GPU and no storage or caddies. Yeah... someone had taken out all of the caddies and the GPU. Luckily I was able to test it with another GPU when I got it and confirmed it worked. </p>
+			<p>After I had received, I basically put it next to my dual-core 2 GHz Late 2005 Power Mac G5 and didn't touch it for a while because it needed a GPU. A few days/weeks later I found someone selling several AMD Radeon HD 5770s from 5,1 Mac Pros and I bought one. The price was quite reasonable. The card arrived soon after. Back then my only other Intel Mac was a Original 2008 MacBook Air 1.8 GHz which didn't have a battery (it was swollen so I removed it), had a broken hinge and could go go past Mac OS X 10.7.5 so I was really excited to get this machine working. I put the card in the machine powered it on and..... nothing. Huh, that was weird. Was my card dead? Or was it not compatible with this model? I looked and looked and then I found it - the card needed an extra 6-pin PCIe power cable. No problem! Or so I thought - the Mac Pro doesn't use 6-pin cables but mini 6-pin and it had 2 ports directly on the logic board so I would need to find the appropriate cable, which at the time was impossible - no one had it here. So out of desperation I came up with the next best thing - I opened another machine I had and cut one of its 6-pin cables straight from the power supply as it wasn't on a connector but directly soldered. After that I connected it to the Mac Pro wire by wire and plugged the other end in the card and surprise, it worked! </p>
+			<center><a href="macprogpuhack.png"><img src="thumbs/macprogpuhackthumb.png" alt="Picture showing the Radeon HD 5770 installed in the computer, with the DIY cable solution visible" width="800" height="600" /></a></center>
+			<p>This was technically my first upgrade on the Mac Pro, I was happy so I put an 80 GB 2.5" HDD and went on and about exploring the different Intel Mac OS X versions. I tried everything from 10.6 to 10.8 and 10.11. In the end I settled with 10.7 but I also wanted to install a newer version alongside it so I looked into it and found you can patch it to run 10.13. Newer versions required a different GPU because they were lacking drivers for my card so I settled with 10.7 and 10.13.... on a single 80 GB HDD... yeah. 10.7 was running amazingly and didn't complain but 10.13 not so much. First it was really slow to boot up and if I was doing a lot of things would straight up freeze. Also for some reason the partition kept filling up with the system writing over 40 GB of data until my drive was full and then everything pretty much broke. I still have no idea what caused this because going to the storage tab in "About This Mac" it just said "System". </p>
+			<center><img src="macprohs.png" alt="High Sierra desktop screenshot with About This Mac window open showing the specifications" width="960" height="540" /></center>
+			<p> After High Sierra filled up its own partition until it couldn't anymore and I couldn't fix it, I backed up my drive and installed Big Sur, yes. Big Sur. I had found out about OpenCore Legacy Patcher and that they had gotten TeraScale cards working, which included mine. The OS was running but if I would describe it more accurately it felt like walking more. It was usable but pretty slow, especially compared to High Sierra. After using it for a few days I switched back to High Sierra but completely removed my 10.7 partition so I could give it more space. I also decided to buy an SSD and that is what I did - a cheap Verbatim 128 GB drive. It's not a good drive but trust me, I was immediate results. Everything was so much faster than before and the OS was more usable than ever. </p>
+			<p> After this I used the Mac Pro like this for a while, only replacing the SSD with the same one but 256 GB in the summer of 2023 when I got my Early 2008 MacBook Pro 17" and the old SSD went into it. </p>
+			<p> Next on my radar was upgrading the RAM - it still had 6 GB which, frankly, was really not a lot. I found someone selling the exact RAM I needed so I purchased 4 4GB modules for a total of 16 GB which cost me 16 euros. I would say that's not bad. This was an easy upgrade - I just put two sticks in each RAM riser card and it worked, no issues. </p>
+			<center><a href="macproram.png"><img src="thumbs/macproramthumb.png" alt="Picture of four modules of 4 GB RAM" width="562" height="650" /></a></center>
+			<p> Some time passed again and I decided I wanted to upgrade this thing even more - and the next thing I felt it needed was a second CPU. After reading about the possible upgrades on <a href="https://blog.greggant.com/posts/2018/05/07/definitive-mac-pro-upgrade-guide.html" target="blank_">The Definitive Classic Mac Pro (2006-2012) Upgrade Guide</a> I was thinking how should I upgrade it. Should I buy two faster CPUs and replace the current one or just buy another E5462 and put it in? Well after searching I could only find another E5462 so I did the latter. The CPU was around 15 euros. Not bad, but there was another problem - I still needed a heatsink for it. Since my Mac Pro didn't have a second CPU installed from the factory it didn't have a second heatsink, only a dummy one to direct airflow, I suppose. The CPU arrived and I left it aside until I bought a heatsink which took me several months to find. First I found a second Mac Pro (a 2006 Quad 2 GHz) which was being sold as broken, for parts. I decided to buy it and get the drive caddies and heatsink from it to put in mine. I admit I overpaid a bit but the seller offered to drive across cities and deliver it to me which meant it wouldn't get damaged during shipping so I agreed. Well it arrived and before I tore it down I always like to test my machines to see what's wrong with them and maybe fix them if I can so I opened it up and everything seemed fine - it was just missing a GPU and RAM so I got my 5770 from the 2008 and a couple of the old RAM sticks, put them in and tried powering it on. To my surprise the machine actually worked! It was working perfectly as well. Now I felt bad about tearing it apart for parts, so I left it alone. I decided to order one on eBay after waiting for months for someone locally to pop up. It cost me around 25 euros and it arrived after a week. Now, it was time to upgrade. I tore open the machine which wasn't hard at all, sure it took longer than a 4,1 or 5,1 but it was still pretty easy. I installed the second CPU, put it back together, powered it on and... it didn't work. </p>
+			<center><a href="IMG_3472.png"><img src="thumbs/IMG_3472thumb.png" alt="CPU and heatsink" width="469" height="403" /></a>
+			<a href="IMG_3483.png"><img src="thumbs/IMG_3483thumb.png" alt="Logic board pic showing the top CPU slot open and empty" width="538" height="403" /></a>
+			<a href="IMG_3485.png"><img src="thumbs/IMG_3485thumb.png" alt="Logic board pic now showing the top processor and heatsink installed" width="538" height="403" /></a><center>
+			<p> Well, this was awkward. It kept resetting, with the power LED next to the button staying constantly on. It kept flashing "ERRA" every time it reset which means a problem with the top CPU. Resetting the SMC changed the LEDS to both "ERRA" and "ERRB" staying on without flashing. I wondered for an hour what could be the issue until I remembered something - I had bought a processor that was modified to work in a LGA775 socket. People take LGA771 (which is what the Mac Pro uses) and cut two more holes on the sides which doesn't destroy any of the pins so I thought it would work with no issues but as it turns out the holes on the side weren't the only thing you had to do - after looking in forums about how it's done I found that there is also a sticker on the bottom which reverses two pins. After tearing the machine apart again, removing the CPU and the sticker and reassembling it back together I tried turning it on back again. And it chimed! The CPU worked! I put everything back together and put it under the desk and set it up again </p>
+			<center><img src="cpuupgrade.png" alt="About This Mac window showing both E5462s" /></center>
+			<p> Now, I've already had bought an RX 580 that has already been waiting for a couple of weeks but I was waiting on the proper cable to use with it. A couple of weeks after the CPU upgrade it and my new SSD arrived - a Crucial MX500 500 GB. It was time to do the last round of upgrades. First I installed the new SSD (I got two caddies from the 2006 Mac Pro) and got Sonoma installed on it with OpenCore Legacy Patcher using the old GPU. The process went smoothly. After the installation I used it for a couple of hours like that and it was actually running alright with that old GPU, a lot better than Big Sur ran when I installed years ago. Which is leading me to think your storage speed is really important in how the whole OS performs. Anyways, after that I opened it up to install the GPU and that's when I noticed something - the cable was way too short to comfortably reach from the logic board to the GPU. I got it plugged it barely just to test the card and everything worked but I had to order an extension, and that's what I did. After 2 days it arrived and I installed everything and... </p>
+			<center><img src="macprosonoma.png" alt="Sonoma desktop screenshot" width="960" height="540" /></center>
+			<p> I can't believe it... After months of upgrading I'm finally done and it all works! So excited to use this machine and it already feels so much faster. The experience on Sonoma is great. </p>
+			<p> If you've made it this far - thank you for reading! </p>
+		</div>
+		<div id="footer">
+			<hr />
+			
+			<img src="../poweredbymacosxserver.gif" alt="Powered by Mac OS X Server" />
+			<img src="../macmade.gif" alt="Made with Mac OS" />
+			<img src="../apache_pb.gif" alt="Powered by Apache" />
+
+			
+			<p>Copyright &copy; <script type="text/javascript">document.write( new Date().getFullYear() );</script> ScarlettPPC</p>
+		</div>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+	<head>
+		<title>ScarlettPPC's Cafe</title>
+		<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="me" href="https://tech.lgbt/@scarlett7447" />
+	</head>
+	<body>
+	<div id="container">
+		<div id="header">
+			<h1>Welcome to</h1>
+			<img src="../banner.png" alt="ScarlettPPC's Website" />
+		</div>
+		<hr />
+		<div id="nav">
+			<h3>
+				<a href="../index.html">
+   					<button type="button">Home</button>
+				</a>
+				<a href="../tutorials.html">
+					<button type="button">Guides</button>
+				</a>
+				<a href="../blog.html">
+					<button class="selected" type="button">Blog</button>
+				</a>
+				<a href="../hobbies.html">
+					<button type="button">My Hobbies</button>
+				</a>
+				<a href="../projects.html">
+					<button type="button">Projects</button>
+				</a>
+				<a href="../about.html">
+					<button type="button">About Me</button>
+				</a>
+			</h3>
+			<hr />
+		</div>
+		<div id="title">
+		<h2>01/05/2023 Trying out FreeBSD... for the third time</h2>
+		</div>
+		<div id="content">
+			<p> So I have been getting into Mac OS alternatives for PowerPC again lately and after playing around with Void Linux on my PowerBook G4 and iBook G3 (they both ran it amazingly
+			and everything is supported) I heard about FreeBSD. It sounded promising as it had more software for PowerPC and was still being maintained, also from what I heard it was faster than Linux.
+			I decided to try it on iBook G3. This wasn't the first time I installed it though, that would be all the way back in 2020 when I was first getting into Unix as a whole. Back then I tried it 
+			in a WM and it seemed fine but it didn't play nice with the VM. It's not the second time either - that would be last year when I tried it on my 2004 Power Mac G5. That went horribly however because
+			there was a huge issue with the ATI Radeon 9600 in it - the output would be fine for like 20 seconds and then it would freeze and become completely unresponsive for minutes at a time.
+			It was basically unusable and nothing I tried fixed this problem. SSHing into the machine was fine and everything worked but any video output from the Radeon would be affected. </p>
+			<p> That bring us to now: the 2001 500 MHz iBook G3. </p>
+			<p> I downloaded the Release 13.2 DVD iso and burned it to a disc. The installation was fine and everything went smoothly. Post install was also mostly fine - I installed xorg and the appropriate driver for the Rage 128.
+			I started it for the first time with the "startx" command and.... nothing. All I got was a blank screen with an unblinking white cursor at the top left. I thought it was broken
+			so I tried configuring it manually but that just resulted in several errors when starting it again. I decided to delete the config files that I made and let X do it automatically.
+			And well.. it worked! It wasn't an issue with Xorg or anything - I was too impatient and just had to wait for a while before it started. Installing CTWM, xterm and some more simple packages went fine,
+			but this is where it starts to go wrong. First, the touchpad wasn't working at all. I tried everything I could but it just did not want to work. Sound also didn't and after troubleshooting for several hours, I couldn't get it to work.
+			Well, whatever I would deal with them later (or so I thought). I started compiling some packages from the sources but after a while random graphical glitches started appearing - very fast static-like lines would appear all over the screen.
+			Now, the later G3s suffered from graphical issues from overheating so I was worried mine was starting to do the same even though it's an early model that should be unaffected so I stopped it. </p>
+			<p> Then I booted it up later again and what do I find? FreeBSD does not want to boot, it just sends me to the Open Firmware console. The installation seems to have had bricked itself. </p>
+			<p> I'm gonna take a break from this now. Keep in mind this doesn't mean that I hate the OS, I might give it a try sometime in the future and maybe on a different machine but for now no more BSDs for me. </p>		
+		</div>
+		<div id="footer">
+			<hr />
+			
+			<img src="../poweredbymacosxserver.gif" alt="Powered by Mac OS X Server" />
+			<img src="../macmade.gif" alt="Made with Mac OS" />
+			<img src="../apache_pb.gif" alt="Powered by Apache" />
+
+			
+			<p>Copyright &copy; <script type="text/javascript">document.write( new Date().getFullYear() );</script> ScarlettPPC</p>
+		</div>
+	</div>
+	</body>
+</html>

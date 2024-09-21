@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+	<head>
+		<title>ScarlettPPC's Cafe</title>
+		<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="me" href="https://tech.lgbt/@scarlett7447" />
+	</head>
+	<body>
+	<div id="container">
+		<div id="header">
+			<h1>Welcome to</h1>
+			<img src="../banner.png" alt="ScarlettPPC's Website" />
+		</div>
+		<hr />
+		<div id="nav">
+			<h3>
+				<a href="../index.html">
+   					<button type="button">Home</button>
+				</a>
+				<a href="../tutorials.html">
+					<button class="selected" type="button">Guides</button>
+				</a>
+				<a href="../blog.html">
+					<button type="button">Blog</button>
+				</a>
+				<a href="../hobbies.html">
+					<button type="button">My Hobbies</button>
+				</a>
+				<a href="../projects.html">
+					<button type="button">Projects</button>
+				</a>
+				<a href="../about.html">
+					<button type="button">About Me</button>
+				</a>
+			</h3>
+			<hr />
+		</div>
+		<div id="title">
+		<h2>Scarlett's Void Linux Handbook</h2>
+		</div>
+		<div id="content">
+			<h4> Installing system: </h4>
+			<p> On x86_64 download the newest iso from voidlinux.org </p>
+			<p> Current 32-bit iso is broken so download one from 2021. Its certificates have expired so you have to update it without certificate verification and then update them.  </p>
+			<p> For PowerPC head out to voidlinux-ppc.org (unofficial) </p>
+			<p> Connect the machine to the internet using a LAN cable. </p>
+
+			<h4> Partitioning notes: </h4>
+			<p> On older x86 systems choose MBR file system and make two partitions on the hard drive, one of them being the swap (two times the amount of RAM). </p>
+			<p> The other is the root filesystem, mounted at "/", using the rest of the free space on the drive. </p>
+			<p> For PowerPC machines make an 800k Apple_Bootstrap partition at the beginning before the other two. </p>
+
+			<h4> Post-installation: </h4>
+			<p> After installing the system login as root and type "visudo", then scroll down until you reach a line "#ALL ALL=(ALL) ALL" and then use the delete key (not backspace) to uncomment it by deleting the #. Also uncomment the other line "Defaults targetpw". After that type ":wq" to save and exit. </p>
+You can now login as the user you set up. 
+			<p> Log out by typing "exit". </p>
+			<p> When typing commands, "#" means you need to execute them as root and "$" means you can execute them as a user. Use sudo to execute with root privileges. </p>
+
+			<h4> Package Manager basic commands: </h4>
+			<p> #xbps-install -Su </p>
+			<p> Check for system updates and install them. </p>
+
+			<p> #xbps-install {program} </p>
+			<p> Install an application. You can install multiple applications separated with space (ex. "xbps-install nano neofetch htop") </p>
+
+			<p> #xbps-remove {program} </p>
+			<p> Uninstall an application. </p>
+
+			<h4> Adding repositories to the package manager: </h4>
+
+			<p> #xbps-install void-repo-nonfree </p>
+			<p> Install nonfree repo for packages that don't have free licenses. </p>
+
+			<p> #xbps-install void-repo-multilib </p>
+			<p> Install repo for 32-bit packages on 64-bit systems. </p>
+
+			<h4> Basic Unix commands: </h4>
+
+			<p> $cd {path} </p>
+			<p> Change directory (ex. "cd /") </p>
+
+			<p> $cd.. </p>
+			<p> Go to parent folder </p>
+
+			<p> $ls </p> 
+			<p> List all files in current directory. You can also specify a path to list, ex. "ls /usr". </p>
+
+			<h4> Installing Network Manager: </h4>
+			<p> #xbps-install NetworkManager network-manager-applet </p>
+			<p> #sv down dhcpcd </p>
+			<p> #rm /var/service/dhcpcd </p>
+			<p> #ln -s /etc/sv/NetworkManager /var/service </p>
+			<p> #ln -s /etc/sv/dbus /var/service </p>
+
+			<h4> Getting audio to work: </h4> 
+			<p> Method 1 - Pulse Audio </p> 
+			<p> #xbps-install pulseaudio pa-applet pavucontrol </p> 
+
+			<p> Method 2 - Alsa (for PowerPC) </p>
+			<p> #xbps-install alsa-utils qastools </p>
+			<p> Open qasmixer and unmute the PCM mixer. </p>
+
+			<h4> Setting the time: </h4>
+			<p> $date </p>
+			<p> Shows the current date and time. </p>
+
+			<p> #date --set "{date and time} </p>
+			<p> Set the date and time. Examples: </p>
+			<p> #date --set "18:58:00" </p>
+			<p> #date --set "22 Nov Thu 12:54:00 EET 2022" </p>
+
+			<h4> Network time sync: </h4>
+			<p> #xbps-install chrony </p>
+			<p> Install chrony. </p>
+			<p> #ln -s /etc/sv/chronyd /var/service </p>
+			<p> #sv up chronyd </p> 
+
+			<h4> Installing a system logger daemon (socklog): </h4>
+			<p> #xbps-install socklog-void </p> 
+			<p> #ln -s /etc/sv/socklog-unix /var/service </p> 
+			<p> #ln -s /etc/sv/nanoklogd /var/service </p> 
+			<p> #sv up socklog-unix </p> 
+			<p> #sv up nanoklogd </p> 
+
+			<h4> Optimize/extend battery life on portable machines: </h4>
+			<p> #xbps-install tlp </p>
+			<p> Install the tlp package. </p>
+
+			<p> #ln -s /etc/sv/tlp /var/service </p>
+			<p> #sv up tlp </p>
+			<p> #tlp start </p>
+
+			<h4> Installing GPU drivers: </h4>
+			<p> AMD/ATI: </p>
+			<p> #xbps-install linux-firmware-amd mesa-dri vulkan-loader mesa-vulkan-radeon mesa-vaapi mesa-vdpau </p>
+
+			<p> Intel: </p>
+			<p> #xbps-install linux-firmware-intel mesa-dri vulkan-loader mesa-vulkan-intel intel-video-accel </p>
+
+			<p> NVIDIA: </p>
+			<p> #xbps-install nvidia </p>
+
+			<p> If you are going to use 32-bit programs install this: </p>
+			<p> #xbps-install nvidia-libs-32bit </p>
+
+			<p> Installing xorg and a Desktop Environment/Window Manager: </p>
+			<p> #xbps-install xorg </p>
+
+			<h4> Installing a Window Manager: </h4>
+			<p> #xbps-install ctwm </p>
+			<p> Install Claude's Tab Window Manager, one of the many WMs available for Void. </p>
+
+			<p> #nano .xinitrc </p>
+			<p> Open the .xinitrc file and then enter the line below: </p>
+			<p> exec ctwm </p>
+
+			<p> #xbps-install xfce4 </p>
+			<p> Install XFCE4. </p>
+
+			<p> $startxfce4 </p>
+			<p> Start XFCE4. </p>
+
+			<h4> Other useful applications from the package repository: </h4>
+			<p> nano - simple to use terminal text editor </p>
+			<p> neofetch - utility that shows system info in the terminal </p>
+			<p> htop - terminal activity and resource usage monitor (kind of similar to Task Manager on Windows and Activity Monitor on Mac OS X) </p>
+			<p> stalonetray - system tray </p>
+			<p> OctoXBPS - GUI for the package manager </p>
+			<p> cbatticon - battery icon for the system tray that shows percentage </p>
+			<p> firefox </p>
+			<p> chromium </p>
+			<p> xterm - lightweight terminal emulator for X </p>
+			<p> nitrogen - wallpaper manager </p>
+			<p> xfe - file explorer </p>
+			<p> abiword - document writer </p>
+			<p> notepadqq - advanced text editor </p>
+			<p> deadbeef - music player </p>
+			<p> git </p>
+			<p> otter-browser - Webkit internet browser </p>
+
+			<h4> Install the XBPS source packages collection: </h4>
+			<p> $cd ~ </p>
+			<p> $git clone https://github.com/void-linux/void-packages.git </p>
+			<p> $cd void-packages </p>
+			<p> $./xbps-src binary-bootstrap </p>
+			<p> $echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf </p>
+
+			<h4> Updating the source packages collection: </h4>
+			<p> $git pull </p>
+			<p> $./xbps-src update-sys </p>
+
+			<h4> Removing old kernels after update </h4>
+			<p> Remove orphaned packages which include old kernels </p>
+			<p> #xbps-remove -o </p>
+			<p> List old kernels. </p>
+			<p> $vkpurge list </p>
+			<p> Remove old kernels. </p>
+			<p> #vkpurge rm all </p>
+
+			<h4> Installing Google Chrome: </h4>
+			<p> $cd ~/void-packages </p>
+			<p> $./xbps-src pkg google-chrome </p>
+			<p> #xbps-install -R hostdir/binpkgs/nonfree google-chrome </p>
+
+			<p> $google-chrome-stable </p>
+			<p> Run Chrome with this command. </p>
+
+			<h4> Installing Discord: </h4>
+			<p> Get the tar files from discord.com and extract them somewhere. After that run the executable in the folder. </p>
+
+			<h4> Installing flatpak: </h4>
+			<p> #xbps-install -S flatpak </p>
+			<p> $flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo </p>
+
+			<p> Head over to flatpak.org to check for apps and how to install them. </p>
+
+			<h4> Installing Spotify: </h4>
+			<p> TODO </p>
+
+			<h4> Installing Minecraft: </h4>
+			<p> TODO </p>
+
+			<h4> Installing Roblox (with Grapejuice): </h4>
+			<p> At the time of writing this Roblox does not officially support Linux and only has a Windows version, but there are several ways to workarounds. </p>
+			<p> I will go over the easiest one which requires you to have Flatpak. </p>
+
+			<p> Install Grapejuice: </p>
+			<p> $flatpak install flathub net.brinkervii.grapejuice </p>
+
+			<p> Open Grapejuice: </p>
+			<p> $flatpak run net.brinkervii.grapejuice first-time-setup </p>
+			<p> $flatpak run net.brinkervii.grapejuice gui </p>
+			
+			<p> After it opens, go to the Player tab and press install. You might want to set your Roblox renderer to Vulkan (if your GPU supports it). </p>
+			<p> Also I recommend enabling the FPS unlocker as the game is locked to 60 fps by default. </p>
+			
+			<p> And that's it! If you didn't get any errors, everything should work now. </p>
+			<p> Joining games from the browser should open the Roblox app automatically. </p>
+			<p> If that doesn't happen you can also open the Roblox app directly, browse and join games directly from it. </p>
+			<p> To do that, open the Grapejuice app and click the button on the home tab. </p>
+			<p> You can also open it from the terminal by typing: </p>
+			<p> $flatpak run net.brinkervii.grapejuice app </p>
+
+		</div>
+		<div id="footer">
+			<hr />
+			
+			<img src="../poweredbymacosxserver.gif" alt="Powered by Mac OS X Server" />
+			<img src="../macmade.gif" alt="Made with Mac OS" />
+			<img src="../apache_pb.gif" alt="Powered by Apache" />
+
+			
+			<p>Copyright &copy; <script type="text/javascript">document.write( new Date().getFullYear() );</script> ScarlettPPC</p>
+		</div>
+	</div>
+	</body>
+</html>

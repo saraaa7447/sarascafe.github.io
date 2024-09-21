@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+	<head>
+		<title>ScarlettPPC's Cafe</title>
+		<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="me" href="https://tech.lgbt/@scarlett7447" />
+	</head>
+	<body>
+	<div id="container">
+		<div id="header">
+			<h1>Welcome to</h1>
+			<img src="../banner.png" alt="ScarlettPPC's Website" />
+		</div>
+		<hr />
+		<div id="nav">
+			<h3>
+				<a href="../index.html">
+   					<button type="button">Home</button>
+				</a>
+				<a href="../tutorials.html">
+					<button class="selected" type="button">Guides</button>
+				</a>
+				<a href="../blog.html">
+					<button type="button">Blog</button>
+				</a>
+				<a href="../hobbies.html">
+					<button type="button">My Hobbies</button>
+				</a>
+				<a href="../projects.html">
+					<button type="button">Projects</button>
+				</a>
+				<a href="../about.html">
+					<button type="button">About Me</button>
+				</a>
+			</h3>
+			<hr />
+		</div>
+		<div id="title">
+		<h2>How to install Mac OS X on a PowerPC Mac</h2>
+		</div>
+		<div id="content">
+			<h3 class="specialtwo"> Method 1 - Using a DVD/CD (For Tiger and Below) </h3>
+
+			<p> If you have installation discs, just boot up your machine and insert the disc. You can either hold C to boot from it or press Alt/Option to go into the Boot Picker (not available on early New World ROM Macs ex. Blue & White Power Macintosh G3). </p>
+
+			<p> If you do not have discs, you can burn your own very easily.
+			 You will need to use a Mac to burn them though, as with Windows PCs it's a hit or miss.
+			 Get the ISO file from Macintosh Garden (Link available below) and use Disk Utility to burn the disc.
+			After that just insert the disc in your Mac and do the same steps as described above. </p>
+
+			<h3 class="specialtwo"> Method 2 - Using Target Disk Mode (Sorbet Leopard only) </h3>
+
+			<p> If you want to install Sorbet Leopard, you can use Target Disk Mode to restore it. You will need a FireWire 400 cable.
+			Connect it to both Macs and then power on the Mac you wish to install it to and hold T until you reach a blue purpleish screen with a yellow FireWire logo. Now the drive should mount on your other machine.
+			Format it as Mac OS Extended (Journaled) and make sure you use the Apple Partition Map using Disk Utility. Then select the partition, click the Restore tab, drag the Sorbet DMG in the Source field and the same partition in the Destination, then click Restore. </p>
+
+			<h3 class="specialtwo"> Method 3 - Using HDD partition (For Leopard) </h3>
+
+			<p> Say you want to install Leopard and as you know it's ISO file is too big to fit on a normal DVD and requires dual-layer DVDs. But what if you cannot find Dual-Layer DVDs?
+			You will need a Tiger install disc for this or Target Disk Mode. Boot up from it and partition your HDD into two seperate partitions. Make sure the second one is 8 GB and give the first one the rest of the space.
+			After that install Mac OS on the first partition (if you're using Target Disk Mode, just use the other Mac to restore the Leopard ISO on the 8 GB partition). Use that to get the Leopard ISO and restore it to the second partition. Now boot from that and it will be like you have an install DVD!
+			Use Leopard's Disk Utility to delete the second partition and expand the remaining one to fill the whole drive. </p>
+
+			
+			<center><a href="https://macintoshgarden.org/apps/mac-osx-mac-os-10-ppc"> <button type="button">Mac OS X ISOs (Mac Garden)</button> </a>
+			<a href="https://macintoshgarden.org/apps/sorbet-leopard"><button type="button">Sorbet Leopard (Mac Garden)</button></a> </center>
+		</div>
+		<div id="footer">
+			<hr />
+			
+			<img src="../poweredbymacosxserver.gif" alt="Powered by Mac OS X Server" />
+			<img src="../macmade.gif" alt="Made with Mac OS" />
+			<img src="../apache_pb.gif" alt="Powered by Apache" />
+
+			
+			<p>Copyright &copy; <script type="text/javascript">document.write( new Date().getFullYear() );</script> ScarlettPPC</p>
+		</div>
+	</div>
+	</body>
+</html>
