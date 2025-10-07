@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+	<head>
+		<title>Sara's Cafe</title>
+		<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="me" href="https://tech.lgbt/@scarlett7447" />
+	</head>
+	<body>
+	<div id="container">
+		<div id="header">
+			<h1>Welcome to</h1>
+			<img src="../banner.png" alt="Saraaa7447's Website" />
+		</div>
+		<hr />
+		<div id="nav">
+			<h3>
+				<a href="../index.html">
+   					<button type="button">Home</button>
+				</a>
+				<a href="../tutorials.html">
+					<button type="button">Guides</button>
+				</a>
+				<a href="../blog.html">
+					<button class="selected" type="button">Blog</button>
+				</a>
+				<a href="../hobbies.html">
+					<button type="button">My Hobbies</button>
+				</a>
+				<a href="../projects.html">
+					<button type="button">Projects</button>
+				</a>
+				<a href="../about.html">
+					<button type="button">About Me</button>
+				</a>
+			</h3>
+			<hr />
+		</div>
+		<div id="title">
+		<h2>01/01/2025 Testing Mac OS Sonoma on various old Macs using OpenCore Legacy Patcher</h2>
+		</div>
+		<div id="content">
+			<p> I have been playing around with OpenCore Legacy Patcher and trying to see how well older Macs, mostly pre-2012 can handle Sonoma. Here are my experiences with a few of my machines capable of utilising the patcher.</p>
+			<h4>Early 2011 17" MacBook Pro</h4>
+			<center><a href="172011sonoma.png"><img src="thumbs/172011sonomathumb.png" alt="Picture of the 2011 17-inch running sonoma on the desktop" /></a></center>
+			<p>Surprisingly fast and responsive, the CPU is fast enough to handle Sonoma without breaking a sweat. After all it is faster than a 2017 12" MacBook which goes up to Ventura officially but also doesn't struggle on Sonoma from what I've heard. The real bottleneck of this machine is the Intel HD 3000 graphics. You are basically forced to use it unless you have a working Radeon (which I do but still disabled just in case) and don't care if it kicks the bucket at a random point in time.</p>
+			<p> AirDrop doesn't work. GPU switching is broken - it defaults to the Radeon which has acceleration disabled by default so it doesn't die. Must be switched using an nvram variable to use the HD 3000.
+			The way you do this is by booting into recovery mode after installing the OS and applying root patches, opening terminal from the "Utilities" and typing this <br /> "nvram FA4CE28D-B62F-4C99-9CC3-6815686E30F9:gpu-power-prefs=%01%00%00%00" <br />
+			After that, you just need to reboot and it should only use the iGPU.
+			Hiding application windows to show the desktop also doesn't work if you're using the Intel Graphics. GPU acceleration works on both GPUs, is disabled but can be enabled on the Radeon. Brightness, sound, sleep and the animated backgrounds and screensavers (and are surprisingly smooth). Trackpack works perfectly. Most applications also work but I haven't done extensive testing. Roblox and Minecraft run surprisingly smooth and are even enjoyable. On the Radeon they are even better, like perfect. Machine is louder and heats up a bit more than when on High Sierra but on the 17" I have the fans at max RPM constantly so it doesn't bother me. The CPU idles at a really low usage so it's not an issue.</p>
+	<h4>Late 2011 13" MacBook Pro</h4>
+			<p>Same story as the 17" 2011 but without the dual GPU issues, is even smoother because the screen is quite a bit smaller and lower resolution so it doesn't tax the GPU as much.</p>
+	<h4>Late 2008 17" MacBook Pro</h4>
+	<center><a href="200817sonoma.png"><img src="thumbs/200817sonomathumb.png" alt="Picture of the 2008 17-inch running sonoma on the desktop" /></a></center>
+			<p>Optical drive isn't recognised. Some software like Adobe CS won't work. Is also very slow and the fans are constantly at high RPM. Usable for light tasks and web browsing but I highly recommend sticking to an earlier version like Mojave or Catalina. Otherwise usable and has GPU acceleration. Has the same issues as the 2010 (no metal support).</p>
+		<h4>Mid 2010 17" MacBook Pro</h4>
+		<center><a href="201017sonomainstall.png"><img src="thumbs/201017sonomainstallthumb.png" alt="Picture of the 2010 17-inch installing sonoma while being on its side" /></a></center>
+
+			<p> Same as the 2011 17" but quite a bit slower as it uses a dual-core first gen i5 instead of a quad-core second gen i7 (missed opportunity to put a quad-core processor in their top line computer). Otherwise fine.</p>
+
+			<h4>2008 Mac Pro</h4>
+			<center><a href="macpro.png"><img src="thumbs/macprothumb.png" alt="Picture of the 2008 Mac Pro running Sonoma" /></a></center>
+
+			<p>PERFECT, absolutely perfect. Everything works, though I have an AMD Radeon RX 580 Sapphire Nitro+ 8GB GPU in mine, which uses the MouSSE kext to emulate SSE42 instructions as the E5462 Xeons lack it and it is required by the drivers, but with it everything works perfectly and is buttery smooth. I've also used it for a bit with a Radeon HD 5770 Mac Edition and it's also still surprisingly usable. It compares in performance to the 2011 17" MacBook Pro. The CPUs are fast enough to easily handle the OS and a ton of applications on top, even games without breaking a sweat. The only issues I have are sleep is broken and it doesn't recognise the optical drive because it is IDE and not SATA. It's such a shame the next version, Sequoia, breaks dual CPU support so it's basically forced to become twice as slow. Should still be usable but no thanks. I didn't hunt for a second heatsink and E5462 processor for nothing. At least using one CPU doesn't cut your RAM amount in half like the next generations. </p>
+			<h4>2017 12" MacBook</h4>
+			<p>This one I actually haven't tried but in theory it should be similar to the 2011 13" in performance but with everything broken actually working. Though I am very curious how much slower it will become compared to an earlier version. Currently it is on Mojave and it's surprisingly fast, like I experience no slowdowns at all, unless it's in a hot environment like an uncooled room during the summer. Then the passive cooling starts struggling doing even basic tasks.</p>
+		</div>
+		<div id="footer">
+			<hr />
+			
+			<img src="../poweredbymacosxserver.gif" alt="Powered by Mac OS X Server" />
+			<img src="../macmade.gif" alt="Made with Mac OS" />
+			<img src="../apache_pb.gif" alt="Powered by Apache" />
+
+			
+			<p>Copyright &copy; <script type="text/javascript">document.write( new Date().getFullYear() );</script> Saraaa7447</p>
+		</div>
+	</div>
+	</body>
+</html>

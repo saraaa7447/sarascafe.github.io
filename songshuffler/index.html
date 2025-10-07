@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Song Shuffler</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <div class="topbar">
+      <h1 class="page-title">Song Shuffler!</h1>
+      <button id="pause-game" class="btn">Pause</button>
+    </div>
+
+    <div class="game-over hidden">
+      <h1>Game Over</h1>
+      <br />
+      <button id="reset-game" class="btn">Restart</button>
+    </div>
+
+
+    <div class="main-layout">
+
+      <div class="pause-overlay hidden">
+        <h1>Paused</h1>
+      </div>
+
+      <!-- Left Side: Mood Meter & Shop Button -->
+      <div class="sidebar left">
+        <div class="mood-container">
+          <span>Mood</span>
+          <div class="mood-bar">
+            <div id="mood-fill"></div>
+          </div>
+          <div class="mood-face" id="mood-face">🙂</div>
+        </div>
+        <button id="open-shop" class="btn">Shop</button>
+      </div>
+
+      <!-- Center: iPod & Recharge -->
+      <div class="center-screen">
+        <div class="counter">Songs Skipped: <span id="counter">0</span></div>
+        <div class="ipod-wrapper">
+
+          <svg id="touch-6th" class="hidden" width="293" height="607" viewBox="0 0 293 607" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <g id="Frame 1">
+
+              <g id="iPod TOuch 7">
+                <g id="Rectangle 84">
+                  <mask id="path-1-inside-1_0_1" fill="white">
+                    <path
+                      d="M0 37C0 16.5655 16.5655 0 37 0H256C276.435 0 293 16.5655 293 37V570C293 590.435 276.435 607 256 607H37C16.5655 607 0 590.435 0 570V37Z" />
+                  </mask>
+                  <path
+                    d="M0 37C0 16.5655 16.5655 0 37 0H256C276.435 0 293 16.5655 293 37V570C293 590.435 276.435 607 256 607H37C16.5655 607 0 590.435 0 570V37Z"
+                    fill="#F5F6F8" />
+                  <g clip-path="url(#paint0_angular_0_1_clip_path)" data-figma-skip-parse="true"
+                    mask="url(#path-1-inside-1_0_1)">
+                    <g transform="matrix(0.0005 0.3685 -0.217552 0.000295186 146.5 303.5)">
+                      <foreignObject x="-837.734" y="-837.734" width="1675.47" height="1675.47">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                          style="background:conic-gradient(from 90deg,rgba(230, 26, 113, 1) 0deg,rgba(213, 15, 102, 1) 36.3757deg,rgba(255, 169, 206, 1) 38.3056deg,rgba(255, 89, 161, 1) 43.5431deg,rgba(203, 6, 93, 1) 50.6408deg,rgba(199, 6, 87, 1) 57.0447deg,rgba(229, 29, 117, 1) 130.785deg,rgba(138, 3, 60, 1) 134.694deg,rgba(234, 31, 120, 1) 136.17deg,rgba(254, 197, 223, 1) 140.928deg,rgba(232, 19, 109, 1) 142.03deg,rgba(240, 42, 130, 1) 149.745deg,rgba(245, 42, 128, 1) 161.775deg,rgba(239, 37, 123, 1) 205.541deg,rgba(183, 6, 83, 1) 209.853deg,rgba(251, 94, 163, 1) 213.034deg,rgba(253, 186, 215, 1) 217.844deg,rgba(179, 0, 73, 1) 219.539deg,rgba(255, 70, 149, 1) 281.573deg,rgba(232, 31, 119, 1) 297.064deg,rgba(208, 1, 89, 1) 308.694deg,rgba(169, 8, 76, 1) 321.012deg,rgba(255, 138, 189, 1) 322.79deg,rgba(229, 27, 115, 1) 328.053deg,rgba(133, 0, 52, 1) 333.667deg,rgba(230, 26, 113, 1) 360deg);height:100%;width:100%;opacity:1">
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <path
+                    d="M37 0V5H256V0V-5H37V0ZM293 37H288V570H293H298V37H293ZM256 607V602H37V607V612H256V607ZM0 570H5V37H0H-5V570H0ZM37 607V602C19.3269 602 5 587.673 5 570H0H-5C-5 593.196 13.8041 612 37 612V607ZM293 570H288C288 587.673 273.673 602 256 602V607V612C279.196 612 298 593.196 298 570H293ZM256 0V5C273.673 5 288 19.3269 288 37H293H298C298 13.804 279.196 -5 256 -5V0ZM37 0V-5C13.804 -5 -5 13.804 -5 37H0H5C5 19.3269 19.3269 5 37 5V0Z"
+                    data-figma-gradient-fill="{&#34;type&#34;:&#34;GRADIENT_ANGULAR&#34;,&#34;stops&#34;:[{&#34;color&#34;:{&#34;r&#34;:0.90196079015731812,&#34;g&#34;:0.10196078568696976,&#34;b&#34;:0.44313725829124451,&#34;a&#34;:1.0},&#34;position&#34;:0.0},{&#34;color&#34;:{&#34;r&#34;:0.83529412746429443,&#34;g&#34;:0.058823529630899429,&#34;b&#34;:0.40000000596046448,&#34;a&#34;:1.0},&#34;position&#34;:0.10104350745677948},{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:0.66274511814117432,&#34;b&#34;:0.80784314870834351,&#34;a&#34;:1.0},&#34;position&#34;:0.10640438646078110},{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:0.34901961684226990,&#34;b&#34;:0.63137257099151611,&#34;a&#34;:1.0},&#34;position&#34;:0.12095295637845993},{&#34;color&#34;:{&#34;r&#34;:0.79607844352722168,&#34;g&#34;:0.023529412224888802,&#34;b&#34;:0.3647058904170990,&#34;a&#34;:1.0},&#34;position&#34;:0.14066897332668304},{&#34;color&#34;:{&#34;r&#34;:0.78039216995239258,&#34;g&#34;:0.023529412224888802,&#34;b&#34;:0.34117648005485535,&#34;a&#34;:1.0},&#34;position&#34;:0.15845739841461182},{&#34;color&#34;:{&#34;r&#34;:0.89803922176361084,&#34;g&#34;:0.11372549086809158,&#34;b&#34;:0.45882353186607361,&#34;a&#34;:1.0},&#34;position&#34;:0.36329242587089539},{&#34;color&#34;:{&#34;r&#34;:0.54117649793624878,&#34;g&#34;:0.011764706112444401,&#34;b&#34;:0.23529411852359772,&#34;a&#34;:1.0},&#34;position&#34;:0.37414956092834473},{&#34;color&#34;:{&#34;r&#34;:0.91764706373214722,&#34;g&#34;:0.12156862765550613,&#34;b&#34;:0.47058823704719543,&#34;a&#34;:1.0},&#34;position&#34;:0.37825083732604980},{&#34;color&#34;:{&#34;r&#34;:0.99607843160629272,&#34;g&#34;:0.77254903316497803,&#34;b&#34;:0.87450981140136719,&#34;a&#34;:1.0},&#34;position&#34;:0.39146608114242554},{&#34;color&#34;:{&#34;r&#34;:0.90980392694473267,&#34;g&#34;:0.074509806931018829,&#34;b&#34;:0.42745098471641541,&#34;a&#34;:1.0},&#34;position&#34;:0.39452674984931946},{&#34;color&#34;:{&#34;r&#34;:0.94117647409439087,&#34;g&#34;:0.16470588743686676,&#34;b&#34;:0.50980395078659058,&#34;a&#34;:1.0},&#34;position&#34;:0.41595858335494995},{&#34;color&#34;:{&#34;r&#34;:0.96078431606292725,&#34;g&#34;:0.16470588743686676,&#34;b&#34;:0.50196081399917603,&#34;a&#34;:1.0},&#34;position&#34;:0.44937583804130554},{&#34;color&#34;:{&#34;r&#34;:0.93725490570068359,&#34;g&#34;:0.14509804546833038,&#34;b&#34;:0.48235294222831726,&#34;a&#34;:1.0},&#34;position&#34;:0.57094585895538330},{&#34;color&#34;:{&#34;r&#34;:0.71764707565307617,&#34;g&#34;:0.023529412224888802,&#34;b&#34;:0.32549020648002625,&#34;a&#34;:1.0},&#34;position&#34;:0.58292633295059204},{&#34;color&#34;:{&#34;r&#34;:0.98431372642517090,&#34;g&#34;:0.36862745881080627,&#34;b&#34;:0.63921570777893066,&#34;a&#34;:1.0},&#34;position&#34;:0.59176230430603027},{&#34;color&#34;:{&#34;r&#34;:0.99215686321258545,&#34;g&#34;:0.7294117808341980,&#34;b&#34;:0.84313726425170898,&#34;a&#34;:1.0},&#34;position&#34;:0.60512316226959229},{&#34;color&#34;:{&#34;r&#34;:0.70196080207824707,&#34;g&#34;:0.0,&#34;b&#34;:0.28627452254295349,&#34;a&#34;:1.0},&#34;position&#34;:0.60983115434646606},{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:0.27450981736183167,&#34;b&#34;:0.58431375026702881,&#34;a&#34;:1.0},&#34;position&#34;:0.78214645385742188},{&#34;color&#34;:{&#34;r&#34;:0.90980392694473267,&#34;g&#34;:0.12156862765550613,&#34;b&#34;:0.46666666865348816,&#34;a&#34;:1.0},&#34;position&#34;:0.82517915964126587},{&#34;color&#34;:{&#34;r&#34;:0.81568628549575806,&#34;g&#34;:0.0039215688593685627,&#34;b&#34;:0.34901961684226990,&#34;a&#34;:1.0},&#34;position&#34;:0.85748231410980225},{&#34;color&#34;:{&#34;r&#34;:0.66274511814117432,&#34;g&#34;:0.031372550874948502,&#34;b&#34;:0.29803922772407532,&#34;a&#34;:1.0},&#34;position&#34;:0.89169996976852417},{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:0.54117649793624878,&#34;b&#34;:0.74117648601531982,&#34;a&#34;:1.0},&#34;position&#34;:0.89663845300674438},{&#34;color&#34;:{&#34;r&#34;:0.89803922176361084,&#34;g&#34;:0.10588235408067703,&#34;b&#34;:0.45098039507865906,&#34;a&#34;:1.0},&#34;position&#34;:0.91125750541687012},{&#34;color&#34;:{&#34;r&#34;:0.52156865596771240,&#34;g&#34;:0.0,&#34;b&#34;:0.20392157137393951,&#34;a&#34;:1.0},&#34;position&#34;:0.92685151100158691}],&#34;stopsVar&#34;:[{&#34;color&#34;:{&#34;r&#34;:0.90196079015731812,&#34;g&#34;:0.10196078568696976,&#34;b&#34;:0.44313725829124451,&#34;a&#34;:1.0},&#34;position&#34;:0.0},{&#34;color&#34;:{&#34;r&#34;:0.83529412746429443,&#34;g&#34;:0.058823529630899429,&#34;b&#34;:0.40000000596046448,&#34;a&#34;:1.0},&#34;position&#34;:0.10104350745677948},{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:0.66274511814117432,&#34;b&#34;:0.80784314870834351,&#34;a&#34;:1.0},&#34;position&#34;:0.10640438646078110},{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:0.34901961684226990,&#34;b&#34;:0.63137257099151611,&#34;a&#34;:1.0},&#34;position&#34;:0.12095295637845993},{&#34;color&#34;:{&#34;r&#34;:0.79607844352722168,&#34;g&#34;:0.023529412224888802,&#34;b&#34;:0.3647058904170990,&#34;a&#34;:1.0},&#34;position&#34;:0.14066897332668304},{&#34;color&#34;:{&#34;r&#34;:0.78039216995239258,&#34;g&#34;:0.023529412224888802,&#34;b&#34;:0.34117648005485535,&#34;a&#34;:1.0},&#34;position&#34;:0.15845739841461182},{&#34;color&#34;:{&#34;r&#34;:0.89803922176361084,&#34;g&#34;:0.11372549086809158,&#34;b&#34;:0.45882353186607361,&#34;a&#34;:1.0},&#34;position&#34;:0.36329242587089539},{&#34;color&#34;:{&#34;r&#34;:0.54117649793624878,&#34;g&#34;:0.011764706112444401,&#34;b&#34;:0.23529411852359772,&#34;a&#34;:1.0},&#34;position&#34;:0.37414956092834473},{&#34;color&#34;:{&#34;r&#34;:0.91764706373214722,&#34;g&#34;:0.12156862765550613,&#34;b&#34;:0.47058823704719543,&#34;a&#34;:1.0},&#34;position&#34;:0.37825083732604980},{&#34;color&#34;:{&#34;r&#34;:0.99607843160629272,&#34;g&#34;:0.77254903316497803,&#34;b&#34;:0.87450981140136719,&#34;a&#34;:1.0},&#34;position&#34;:0.39146608114242554},{&#34;color&#34;:{&#34;r&#34;:0.90980392694473267,&#34;g&#34;:0.074509806931018829,&#34;b&#34;:0.42745098471641541,&#34;a&#34;:1.0},&#34;position&#34;:0.39452674984931946},{&#34;color&#34;:{&#34;r&#34;:0.94117647409439087,&#34;g&#34;:0.16470588743686676,&#34;b&#34;:0.50980395078659058,&#34;a&#34;:1.0},&#34;position&#34;:0.41595858335494995},{&#34;color&#34;:{&#34;r&#34;:0.96078431606292725,&#34;g&#34;:0.16470588743686676,&#34;b&#34;:0.50196081399917603,&#34;a&#34;:1.0},&#34;position&#34;:0.44937583804130554},{&#34;color&#34;:{&#34;r&#34;:0.93725490570068359,&#34;g&#34;:0.14509804546833038,&#34;b&#34;:0.48235294222831726,&#34;a&#34;:1.0},&#34;position&#34;:0.57094585895538330},{&#34;color&#34;:{&#34;r&#34;:0.71764707565307617,&#34;g&#34;:0.023529412224888802,&#34;b&#34;:0.32549020648002625,&#34;a&#34;:1.0},&#34;position&#34;:0.58292633295059204},{&#34;color&#34;:{&#34;r&#34;:0.98431372642517090,&#34;g&#34;:0.36862745881080627,&#34;b&#34;:0.63921570777893066,&#34;a&#34;:1.0},&#34;position&#34;:0.59176230430603027},{&#34;color&#34;:{&#34;r&#34;:0.99215686321258545,&#34;g&#34;:0.7294117808341980,&#34;b&#34;:0.84313726425170898,&#34;a&#34;:1.0},&#34;position&#34;:0.60512316226959229},{&#34;color&#34;:{&#34;r&#34;:0.70196080207824707,&#34;g&#34;:0.0,&#34;b&#34;:0.28627452254295349,&#34;a&#34;:1.0},&#34;position&#34;:0.60983115434646606},{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:0.27450981736183167,&#34;b&#34;:0.58431375026702881,&#34;a&#34;:1.0},&#34;position&#34;:0.78214645385742188},{&#34;color&#34;:{&#34;r&#34;:0.90980392694473267,&#34;g&#34;:0.12156862765550613,&#34;b&#34;:0.46666666865348816,&#34;a&#34;:1.0},&#34;position&#34;:0.82517915964126587},{&#34;color&#34;:{&#34;r&#34;:0.81568628549575806,&#34;g&#34;:0.0039215688593685627,&#34;b&#34;:0.34901961684226990,&#34;a&#34;:1.0},&#34;position&#34;:0.85748231410980225},{&#34;color&#34;:{&#34;r&#34;:0.66274511814117432,&#34;g&#34;:0.031372550874948502,&#34;b&#34;:0.29803922772407532,&#34;a&#34;:1.0},&#34;position&#34;:0.89169996976852417},{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:0.54117649793624878,&#34;b&#34;:0.74117648601531982,&#34;a&#34;:1.0},&#34;position&#34;:0.89663845300674438},{&#34;color&#34;:{&#34;r&#34;:0.89803922176361084,&#34;g&#34;:0.10588235408067703,&#34;b&#34;:0.45098039507865906,&#34;a&#34;:1.0},&#34;position&#34;:0.91125750541687012},{&#34;color&#34;:{&#34;r&#34;:0.52156865596771240,&#34;g&#34;:0.0,&#34;b&#34;:0.20392157137393951,&#34;a&#34;:1.0},&#34;position&#34;:0.92685151100158691}],&#34;transform&#34;:{&#34;m00&#34;:1.0000001192092896,&#34;m01&#34;:-435.10418701171875,&#34;m02&#34;:363.55212402343750,&#34;m10&#34;:737.0,&#34;m11&#34;:0.59037208557128906,&#34;m12&#34;:-65.295188903808594},&#34;opacity&#34;:1.0,&#34;blendMode&#34;:&#34;NORMAL&#34;,&#34;visible&#34;:true}"
+                    mask="url(#path-1-inside-1_0_1)" />
+                </g>
+                <circle id="Ellipse 38" cx="147" cy="570" r="24.5" fill="url(#paint1_linear_0_1)" stroke="#EBECF0" />
+                <rect id="Rectangle 85" x="139" y="561" width="17" height="17" rx="4" stroke="url(#paint2_linear_0_1)"
+                  stroke-width="2" />
+                <rect id="screen" x="22.5" y="83.5" width="250" height="440" rx="2.5" fill="#FF93CE" stroke="black"
+                  stroke-width="3" />
+                <circle id="Ellipse 39" cx="147.5" cy="38.5" r="4.5" fill="url(#paint3_linear_0_1)"
+                  stroke="url(#paint4_linear_0_1)" stroke-width="4" />
+                <rect id="Rectangle 94" x="24" y="362" width="247" height="160" fill="url(#paint5_linear_0_1)" />
+                <rect id="Rectangle 92" x="155" y="422" width="5" height="21" rx="1" fill="#4B4B4B" />
+                <rect id="Rectangle 93" x="145" y="422" width="5" height="21" rx="1" fill="#4B4B4B" />
+                <path id="Polygon 9"
+                  d="M217.233 431.607C217.965 431.977 217.965 433.023 217.233 433.393L202.451 440.86C201.786 441.196 201 440.713 201 439.968V425.032C201 424.287 201.786 423.804 202.451 424.14L217.233 431.607Z"
+                  fill="#4B4B4B" />
+                <path id="Polygon 10"
+                  d="M232.322 431.615C233.033 431.99 233.033 433.01 232.322 433.385L218.216 440.82C217.55 441.171 216.75 440.688 216.75 439.936V425.064C216.75 424.312 217.55 423.829 218.216 424.18L232.322 431.615Z"
+                  fill="#4B4B4B" />
+                <path id="Polygon 11"
+                  d="M81.7668 433.393C81.0347 433.023 81.0347 431.977 81.7668 431.607L96.5491 424.14C97.2142 423.804 98 424.287 98 425.032V439.968C98 440.713 97.2142 441.196 96.5491 440.86L81.7668 433.393Z"
+                  fill="#4B4B4B" />
+                <path id="Polygon 13"
+                  d="M66.6781 433.385C65.9666 433.01 65.9666 431.99 66.6781 431.615L80.7837 424.18C81.4496 423.829 82.25 424.312 82.25 425.064V439.936C82.25 440.688 81.4496 441.171 80.7837 440.82L66.6781 433.385Z"
+                  fill="#4B4B4B" />
+                <circle class="skip-btn" cx="219" cy="435" r="27" fill="#D9D9D9" fill-opacity="0.01" />
+                <text x="150" y="150" text-anchor="middle" fill="#000" font-size="16"
+                  class="ipod-title">Loading...</text>
+                <text x="150" y="170" text-anchor="middle" fill="#000" font-size="16" class="ipod-artist">...</text>
+                <text x="150" y="190" text-anchor="middle" fill="#000" font-size="16" class="ipod-album">...</text>
+                <text x="150" y="210" text-anchor="middle" fill="#000" font-size="14" class="ipod-length">...</text>
+                <text x="150" y="220" text-anchor="middle" fill="#000" font-size="10" class="ipod-battery">Battery:
+                  100%</text>
+                <foreignObject x="65" y="240" width="160" height="10">
+                  <div xmlns="http://www.w3.org/1999/xhtml">
+                    <div class="progress-bar">
+                      <div class="progress-fill song-progress"></div>
+                    </div>
+                  </div>
+                </foreignObject>
+              </g>
+            </g>
+            <defs>
+              <clipPath id="paint0_angular_0_1_clip_path">
+                <path
+                  d="M37 0V5H256V0V-5H37V0ZM293 37H288V570H293H298V37H293ZM256 607V602H37V607V612H256V607ZM0 570H5V37H0H-5V570H0ZM37 607V602C19.3269 602 5 587.673 5 570H0H-5C-5 593.196 13.8041 612 37 612V607ZM293 570H288C288 587.673 273.673 602 256 602V607V612C279.196 612 298 593.196 298 570H293ZM256 0V5C273.673 5 288 19.3269 288 37H293H298C298 13.804 279.196 -5 256 -5V0ZM37 0V-5C13.804 -5 -5 13.804 -5 37H0H5C5 19.3269 19.3269 5 37 5V0Z"
+                  mask="url(#path-1-inside-1_0_1)" />
+              </clipPath>
+              <linearGradient id="paint1_linear_0_1" x1="147" y1="545" x2="147" y2="595" gradientUnits="userSpaceOnUse">
+                <stop offset="0.501202" stop-color="#ECEDF1" />
+                <stop offset="0.536615" stop-color="#F3F4F8" />
+              </linearGradient>
+              <linearGradient id="paint2_linear_0_1" x1="139" y1="561" x2="156.5" y2="579"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="white" />
+                <stop offset="0.8543" stop-color="#DADBDF" />
+              </linearGradient>
+              <linearGradient id="paint3_linear_0_1" x1="147.5" y1="32" x2="147.5" y2="45"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0C4DCD" />
+                <stop offset="1" stop-color="#062767" />
+              </linearGradient>
+              <linearGradient id="paint4_linear_0_1" x1="142.5" y1="36" x2="149.5" y2="44.5"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#363434" />
+                <stop offset="1" stop-color="#878585" />
+              </linearGradient>
+              <linearGradient id="paint5_linear_0_1" x1="147.5" y1="362" x2="147.5" y2="522"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFFEFE" stop-opacity="0.49" />
+                <stop offset="1" stop-color="white" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+
+          <svg id="touch-4th" class="hidden" width="293" height="544" viewBox="0 0 293 544" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="iPod touch 4">
+              <g id="Rectangle 87" filter="url(#filter0_d_69_81)">
+                <mask id="path-1-inside-1_69_81" fill="white">
+                  <path
+                    d="M0 41C0 18.3563 18.3563 0 41 0H244C266.644 0 285 18.3563 285 41V495C285 517.644 266.644 536 244 536H41C18.3563 536 0 517.644 0 495V41Z" />
+                </mask>
+                <path
+                  d="M0 41C0 18.3563 18.3563 0 41 0H244C266.644 0 285 18.3563 285 41V495C285 517.644 266.644 536 244 536H41C18.3563 536 0 517.644 0 495V41Z"
+                  fill="url(#paint0_linear_69_81)" />
+                <g clip-path="url(#paint1_angular_69_81_clip_path)" data-figma-skip-parse="true"
+                  mask="url(#path-1-inside-1_69_81)">
+                  <g transform="matrix(0 0.268 -0.1425 0 142.5 268)">
+                    <foreignObject x="-1021.05" y="-1021.05" width="2042.11" height="2042.11">
+                      <div xmlns="http://www.w3.org/1999/xhtml"
+                        style="background:conic-gradient(from 90deg,rgba(116, 116, 116, 1) 0deg,rgba(191, 191, 191, 1) 126.513deg,rgba(109, 109, 109, 1) 136.223deg,rgba(173, 173, 173, 1) 142.359deg,rgba(211, 211, 211, 1) 180.182deg,rgba(173, 173, 173, 1) 218.2deg,rgba(109, 109, 109, 1) 224.273deg,rgba(191, 191, 191, 1) 231.117deg,rgba(102, 102, 102, 1) 360deg);height:100%;width:100%;opacity:1">
+                      </div>
+                    </foreignObject>
+                  </g>
+                </g>
+                <path
+                  d="M41 0V3H244V0V-3H41V0ZM285 41H282V495H285H288V41H285ZM244 536V533H41V536V539H244V536ZM0 495H3V41H0H-3V495H0ZM41 536V533C20.0132 533 3 515.987 3 495H0H-3C-3 519.301 16.6995 539 41 539V536ZM285 495H282C282 515.987 264.987 533 244 533V536V539C268.301 539 288 519.301 288 495H285ZM244 0V3C264.987 3 282 20.0132 282 41H285H288C288 16.6995 268.301 -3 244 -3V0ZM41 0V-3C16.6995 -3 -3 16.6995 -3 41H0H3C3 20.0132 20.0132 3 41 3V0Z"
+                  data-figma-gradient-fill="{&#34;type&#34;:&#34;GRADIENT_ANGULAR&#34;,&#34;stops&#34;:[{&#34;color&#34;:{&#34;r&#34;:0.45490196347236633,&#34;g&#34;:0.45490196347236633,&#34;b&#34;:0.45490196347236633,&#34;a&#34;:1.0},&#34;position&#34;:0.0},{&#34;color&#34;:{&#34;r&#34;:0.74901962280273438,&#34;g&#34;:0.74901962280273438,&#34;b&#34;:0.74901962280273438,&#34;a&#34;:1.0},&#34;position&#34;:0.35142400860786438},{&#34;color&#34;:{&#34;r&#34;:0.42745098471641541,&#34;g&#34;:0.42745098471641541,&#34;b&#34;:0.42745098471641541,&#34;a&#34;:1.0},&#34;position&#34;:0.37839639186859131},{&#34;color&#34;:{&#34;r&#34;:0.67843139171600342,&#34;g&#34;:0.67843139171600342,&#34;b&#34;:0.67843139171600342,&#34;a&#34;:1.0},&#34;position&#34;:0.39544200897216797},{&#34;color&#34;:{&#34;r&#34;:0.82745099067687988,&#34;g&#34;:0.82745099067687988,&#34;b&#34;:0.82745099067687988,&#34;a&#34;:1.0},&#34;position&#34;:0.50050419569015503},{&#34;color&#34;:{&#34;r&#34;:0.67843139171600342,&#34;g&#34;:0.67843139171600342,&#34;b&#34;:0.67843139171600342,&#34;a&#34;:1.0},&#34;position&#34;:0.60611051321029663},{&#34;color&#34;:{&#34;r&#34;:0.42745098471641541,&#34;g&#34;:0.42745098471641541,&#34;b&#34;:0.42745098471641541,&#34;a&#34;:1.0},&#34;position&#34;:0.62298130989074707},{&#34;color&#34;:{&#34;r&#34;:0.74901962280273438,&#34;g&#34;:0.74901962280273438,&#34;b&#34;:0.74901962280273438,&#34;a&#34;:1.0},&#34;position&#34;:0.64199161529541016},{&#34;color&#34;:{&#34;r&#34;:0.40000000596046448,&#34;g&#34;:0.40000000596046448,&#34;b&#34;:0.40000000596046448,&#34;a&#34;:1.0},&#34;position&#34;:1.0}],&#34;stopsVar&#34;:[{&#34;color&#34;:{&#34;r&#34;:0.45490196347236633,&#34;g&#34;:0.45490196347236633,&#34;b&#34;:0.45490196347236633,&#34;a&#34;:1.0},&#34;position&#34;:0.0},{&#34;color&#34;:{&#34;r&#34;:0.74901962280273438,&#34;g&#34;:0.74901962280273438,&#34;b&#34;:0.74901962280273438,&#34;a&#34;:1.0},&#34;position&#34;:0.35142400860786438},{&#34;color&#34;:{&#34;r&#34;:0.42745098471641541,&#34;g&#34;:0.42745098471641541,&#34;b&#34;:0.42745098471641541,&#34;a&#34;:1.0},&#34;position&#34;:0.37839639186859131},{&#34;color&#34;:{&#34;r&#34;:0.67843139171600342,&#34;g&#34;:0.67843139171600342,&#34;b&#34;:0.67843139171600342,&#34;a&#34;:1.0},&#34;position&#34;:0.39544200897216797},{&#34;color&#34;:{&#34;r&#34;:0.82745099067687988,&#34;g&#34;:0.82745099067687988,&#34;b&#34;:0.82745099067687988,&#34;a&#34;:1.0},&#34;position&#34;:0.50050419569015503},{&#34;color&#34;:{&#34;r&#34;:0.67843139171600342,&#34;g&#34;:0.67843139171600342,&#34;b&#34;:0.67843139171600342,&#34;a&#34;:1.0},&#34;position&#34;:0.60611051321029663},{&#34;color&#34;:{&#34;r&#34;:0.42745098471641541,&#34;g&#34;:0.42745098471641541,&#34;b&#34;:0.42745098471641541,&#34;a&#34;:1.0},&#34;position&#34;:0.62298130989074707},{&#34;color&#34;:{&#34;r&#34;:0.74901962280273438,&#34;g&#34;:0.74901962280273438,&#34;b&#34;:0.74901962280273438,&#34;a&#34;:1.0},&#34;position&#34;:0.64199161529541016},{&#34;color&#34;:{&#34;r&#34;:0.40000000596046448,&#34;g&#34;:0.40000000596046448,&#34;b&#34;:0.40000000596046448,&#34;a&#34;:1.0},&#34;position&#34;:1.0}],&#34;transform&#34;:{&#34;m00&#34;:1.7451218218438903e-14,&#34;m01&#34;:-285.0,&#34;m02&#34;:285.0,&#34;m10&#34;:536.0,&#34;m11&#34;:3.2820534484612196e-14,&#34;m12&#34;:-3.2820534484612196e-14},&#34;opacity&#34;:1.0,&#34;blendMode&#34;:&#34;NORMAL&#34;,&#34;visible&#34;:true}"
+                  mask="url(#path-1-inside-1_69_81)" />
+              </g>
+              <circle id="Ellipse 40" cx="143" cy="500" r="24.5" fill="url(#paint2_linear_69_81)" stroke="#EBECF0" />
+              <rect id="Rectangle 88" x="135" y="491" width="17" height="17" rx="4" stroke="url(#paint3_linear_69_81)"
+                stroke-width="2" />
+              <g id="screen">
+                <rect x="18.5" y="82.5" width="249" height="370" rx="2.5" fill="#D8D8D8" />
+                <rect x="18.5" y="82.5" width="249" height="370" rx="2.5" fill="url(#paint4_linear_69_81)"
+                  fill-opacity="0.2" />
+                <rect x="18.5" y="82.5" width="249" height="370" rx="2.5" stroke="#444141" stroke-width="3" />
+                <text x="140" y="150" text-anchor="middle" fill="#000" font-size="16"
+                  class="ipod-title">Loading...</text>
+                <text x="140" y="170" text-anchor="middle" fill="#000" font-size="16" class="ipod-artist">...</text>
+                <text x="140" y="190" text-anchor="middle" fill="#000" font-size="16" class="ipod-album">...</text>
+                <text x="140" y="210" text-anchor="middle" fill="#000" font-size="14" class="ipod-length">...</text>
+                <text x="140" y="220" text-anchor="middle" fill="#000" font-size="10" class="ipod-battery">Battery:
+                  100%</text>
+                <foreignObject x="60" y="240" width="160" height="10">
+                  <div xmlns="http://www.w3.org/1999/xhtml">
+                    <div class="progress-bar">
+                      <div class="progress-fill song-progress"></div>
+                    </div>
+                  </div>
+                </foreignObject>
+              </g>
+
+              <circle id="Ellipse 41" cx="140.5" cy="38.5" r="4.5" fill="url(#paint5_linear_69_81)"
+                stroke="url(#paint6_linear_69_81)" stroke-width="4" />
+              <rect id="Rectangle 90" x="20" y="386" width="246" height="65" fill="url(#paint7_linear_69_81)" />
+              <rect id="Rectangle 91" x="20" y="386" width="246" height="65" fill="url(#paint8_linear_69_81)" />
+              <rect id="Rectangle 92" x="145" y="405" width="5" height="21" rx="1" fill="white" />
+              <rect id="Rectangle 93" x="135" y="405" width="5" height="21" rx="1" fill="white" />
+              <path id="Polygon 9"
+                d="M207.233 414.607C207.965 414.977 207.965 416.023 207.233 416.393L192.451 423.86C191.786 424.196 191 423.713 191 422.968V408.032C191 407.287 191.786 406.804 192.451 407.14L207.233 414.607Z"
+                fill="white" />
+              <path id="Polygon 10"
+                d="M222.322 414.615C223.033 414.99 223.033 416.01 222.322 416.385L208.216 423.82C207.55 424.171 206.75 423.688 206.75 422.936V408.064C206.75 407.312 207.55 406.829 208.216 407.18L222.322 414.615Z"
+                fill="white" />
+              <path id="Polygon 11"
+                d="M71.7668 416.393C71.0347 416.023 71.0347 414.977 71.7668 414.607L86.5491 407.14C87.2142 406.804 88 407.287 88 408.032V422.968C88 423.713 87.2142 424.196 86.5491 423.86L71.7668 416.393Z"
+                fill="white" />
+              <path id="Polygon 13"
+                d="M56.6781 416.385C55.9666 416.01 55.9666 414.99 56.6781 414.615L70.7837 407.18C71.4496 406.829 72.25 407.312 72.25 408.064V422.936C72.25 423.688 71.4496 424.171 70.7837 423.82L56.6781 416.385Z"
+                fill="white" />
+              <circle class="skip-btn" cx="209" cy="418" r="27" fill="#D9D9D9" fill-opacity="0.01" />
+            </g>
+            <defs>
+              <filter id="filter0_d_69_81" x="0" y="0" width="293" height="544" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="4" dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_69_81" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_69_81" result="shape" />
+              </filter>
+              <clipPath id="paint1_angular_69_81_clip_path">
+                <path
+                  d="M41 0V3H244V0V-3H41V0ZM285 41H282V495H285H288V41H285ZM244 536V533H41V536V539H244V536ZM0 495H3V41H0H-3V495H0ZM41 536V533C20.0132 533 3 515.987 3 495H0H-3C-3 519.301 16.6995 539 41 539V536ZM285 495H282C282 515.987 264.987 533 244 533V536V539C268.301 539 288 519.301 288 495H285ZM244 0V3C264.987 3 282 20.0132 282 41H285H288C288 16.6995 268.301 -3 244 -3V0ZM41 0V-3C16.6995 -3 -3 16.6995 -3 41H0H3C3 20.0132 20.0132 3 41 3V0Z"
+                  mask="url(#path-1-inside-1_69_81)" />
+              </clipPath>
+              <linearGradient id="paint0_linear_69_81" x1="-15.1689" y1="491.905" x2="382.5" y2="342"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0.618591" stop-color="#F5F5F5" />
+                <stop offset="0.62237" stop-color="#FBFBFB" />
+              </linearGradient>
+              <linearGradient id="paint2_linear_69_81" x1="143" y1="475" x2="143" y2="525"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0.501202" stop-color="#EDEDED" />
+                <stop offset="0.536615" stop-color="#FCFCFC" />
+              </linearGradient>
+              <linearGradient id="paint3_linear_69_81" x1="141" y1="490" x2="142" y2="509"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0.378834" stop-color="#BFBFBF" />
+                <stop offset="0.494444" stop-color="#DADBDF" />
+              </linearGradient>
+              <linearGradient id="paint4_linear_69_81" x1="272" y1="404.5" x2="143" y2="454"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0.253209" stop-color="white" stop-opacity="0" />
+                <stop offset="0.262684" stop-color="#BABABA" />
+              </linearGradient>
+              <linearGradient id="paint5_linear_69_81" x1="140.5" y1="32" x2="140.5" y2="45"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0C4DCD" />
+                <stop offset="1" stop-color="#062767" />
+              </linearGradient>
+              <linearGradient id="paint6_linear_69_81" x1="135.5" y1="36" x2="142.5" y2="44.5"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#363434" />
+                <stop offset="1" stop-color="#878585" />
+              </linearGradient>
+              <linearGradient id="paint7_linear_69_81" x1="134.5" y1="386" x2="134.5" y2="451"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#191917" />
+                <stop offset="0.0217684" stop-color="#40403F" />
+                <stop offset="0.536353" stop-color="#191917" />
+                <stop offset="0.554753" />
+              </linearGradient>
+              <linearGradient id="paint8_linear_69_81" x1="134.5" y1="386" x2="134.5" y2="451"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#191917" />
+                <stop offset="0.0217684" stop-color="#40403F" />
+                <stop offset="0.536353" stop-color="#191917" />
+                <stop offset="0.554753" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+
+          <svg id="sixth-gen" class="hidden" class="" width="284" height="475" viewBox="0 0 284 475" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <g id="Frame 122">
+
+              <g id="iPod 6">
+                <g id="Rectafwefewfwengle 83">
+                  <rect width="284" height="475" rx="28" fill="url(#paint0_linear_0_1)" />
+                  <rect width="284" height="475" rx="28" fill="url(#paint1_linear_0_1)" fill-opacity="0.2" />
+                </g>
+                <rect id="Rectangfewfwefwele 59" x="25" y="23" width="235" height="178" rx="4" stroke="#494A4E"
+                  stroke-width="4" />
+                <rect id="screen" x="27" y="25" width="231" height="174" fill="white" />
+                <text x="140" y="80" text-anchor="middle" fill="#000" font-size="12"
+                  class="ipod-title">Loading...</text>
+                <text x="140" y="90" text-anchor="middle" fill="#000" font-size="10" class="ipod-artist">...</text>
+                <text x="140" y="100" text-anchor="middle" fill="#000" font-size="10" class="ipod-album">...</text>
+                <text x="140" y="110" text-anchor="middle" fill="#000" font-size="10" class="ipod-length">...</text>
+                <text x="140" y="120" text-anchor="middle" fill="#000" font-size="10" class="ipod-battery">Battery:
+                  100%</text>
+                <foreignObject x="60" y="140" width="160" height="10">
+                  <div xmlns="http://www.w3.org/1999/xhtml">
+                    <div class="progress-bar">
+                      <div class="progress-fill song-progress"></div>
+                    </div>
+                  </div>
+                </foreignObject>
+                <circle id="Ellrewrewrwripse 37" cx="142.5" cy="335.5" r="87.25" fill="#FAFBFD" stroke="#7C7D7F"
+                  stroke-width="0.5" />
+                <circle id="Ellrewrewrwwipse 36" cx="142.5" cy="335.5" r="31.25" fill="url(#paint2_linear_0_1)"
+                  stroke="#A3A3A3" stroke-width="0.5" />
+                <rect id="Rectanfwefewfewgle 58" x="27" y="25" width="231" height="15" fill="url(#paint3_linear_0_1)" />
+                <path id="MENU"
+                  d="M125.85 268V259.41H128.445L130.004 265.27L131.545 259.41H134.146V268H132.535V261.238L130.83 268H129.16L127.461 261.238V268H125.85ZM135.869 268V259.41H142.238V260.863H137.604V262.768H141.916V264.215H137.604V266.553H142.402V268H135.869ZM143.891 268V259.41H145.578L149.094 265.146V259.41H150.705V268H148.965L145.502 262.398V268H143.891ZM152.533 259.41H154.268V264.062C154.268 264.801 154.289 265.279 154.332 265.498C154.406 265.85 154.582 266.133 154.859 266.348C155.141 266.559 155.523 266.664 156.008 266.664C156.5 266.664 156.871 266.564 157.121 266.365C157.371 266.162 157.521 265.914 157.572 265.621C157.623 265.328 157.648 264.842 157.648 264.162V259.41H159.383V263.922C159.383 264.953 159.336 265.682 159.242 266.107C159.148 266.533 158.975 266.893 158.721 267.186C158.471 267.479 158.135 267.713 157.713 267.889C157.291 268.061 156.74 268.146 156.061 268.146C155.24 268.146 154.617 268.053 154.191 267.865C153.77 267.674 153.436 267.428 153.189 267.127C152.943 266.822 152.781 266.504 152.703 266.172C152.59 265.68 152.533 264.953 152.533 263.992V259.41Z"
+                  fill="#A8B0BB" />
+                <rect id="Recegewgtangle 59_2" x="150" y="405" width="2" height="9" fill="#A8B0BB" />
+                <rect id="Regwegewgwctangle 60" x="146" y="405" width="2" height="9" fill="#A8B0BB" />
+                <path id="Pogwegwegewlygon 8" d="M141 409.5L132 414.263V404.737L141 409.5Z" fill="#A8B0BB" />
+                <rect id="Regwegwegwegtangle 61" x="218" y="332" width="2" height="9" fill="#A8B0BB" />
+                <path id="Polwegwegwegygon 9" d="M212 336.5L203 341.263V331.737L212 336.5Z" fill="#A8B0BB" />
+                <path id="Polwegwegweygon 10" d="M220 336.5L211 341.263V331.737L220 336.5Z" fill="#A8B0BB" />
+                <rect id="Recgwegwegwetangle 62" x="66" y="341" width="2" height="9" transform="rotate(180 66 341)"
+                  fill="#A8B0BB" />
+                <path id="Polgwegwegygon 11" d="M72 336.5L81 331.737V341.263L72 336.5Z" fill="#A8B0BB" />
+                <path id="Polgwegwegeygon 12" d="M64 336.5L73 331.737V341.263L64 336.5Z" fill="#A8B0BB" />
+                <circle class="skip-btn" cx="212" cy="335" r="27" fill="#D9D9D9" fill-opacity="0.01" />
+              </g>
+            </g>
+            <defs>
+              <linearGradient id="paint0_linear_0_1" x1="142" y1="0" x2="142" y2="475" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#A2A2A2" />
+                <stop offset="0.013883" stop-color="#D0CFCF" />
+                <stop offset="0.0213567" stop-color="#E0DFDF" />
+                <stop offset="0.0454875" stop-color="#F2F2F2" />
+                <stop offset="0.453422" stop-color="#E2E2E2" />
+                <stop offset="0.954193" stop-color="#C0C0C0" />
+                <stop offset="0.968613" stop-color="#9E9E9E" />
+                <stop offset="0.985053" stop-color="#7E7E7E" />
+                <stop offset="1" stop-color="#595959" />
+              </linearGradient>
+              <linearGradient id="paint1_linear_0_1" x1="284" y1="215.5" x2="-2.0449e-06" y2="216"
+                gradientUnits="userSpaceOnUse">
+                <stop />
+                <stop offset="0.044476" stop-opacity="0" />
+                <stop offset="0.952766" stop-opacity="0" />
+                <stop offset="1" />
+              </linearGradient>
+              <linearGradient id="paint2_linear_0_1" x1="142.5" y1="304" x2="142.5" y2="367"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#C1C1C1" />
+                <stop offset="1" stop-color="#EAEAEA" />
+              </linearGradient>
+              <linearGradient id="paint3_linear_0_1" x1="27" y1="25" x2="27" y2="40" gradientUnits="userSpaceOnUse">
+                <stop offset="0.0493833" stop-color="#F6F9FC" />
+                <stop offset="0.103926" stop-color="#FEFFFF" />
+                <stop offset="0.124083" stop-color="#FAFBFD" />
+                <stop offset="0.499953" stop-color="#D9DDDE" />
+                <stop offset="0.529596" stop-color="#C5C9CC" />
+                <stop offset="0.949557" stop-color="#9FA3A6" />
+                <stop offset="0.96903" stop-color="#919294" />
+                <stop offset="0.976519" stop-color="#525252" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+
+
+          <svg id="fifth-gen" class="hidden" width="282" height="473" viewBox="0 0 282 473" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="iPod 5">
+              <rect id="Rectangle 55" x="1.5" y="1.5" width="279" height="470" rx="27.5" fill="url(#paint0_linear_55_2)"
+                stroke="#DADEE9" stroke-width="3" />
+              <g id="Ellipse 34">
+                <circle cx="141" cy="334" r="87" fill="url(#paint1_linear_55_2)" />
+                <circle cx="141" cy="334" r="86" stroke="url(#paint2_linear_55_2)" stroke-opacity="0.59"
+                  stroke-width="2" />
+              </g>
+              <circle id="Ellipse 35" cx="141.5" cy="333.5" r="31" fill="url(#paint3_radial_55_2)"
+                stroke="url(#paint4_linear_55_2)" />
+              <rect id="Rectangle 57" x="24" y="26" width="235" height="178" rx="4" stroke="#494A4E" stroke-width="4" />
+              <rect id="Rectangle 56" x="26" y="28" width="231" height="174" fill="#EDF6FF" />
+              <text x="140" y="80" text-anchor="middle" fill="#000" font-size="12" class="ipod-title">Loading...</text>
+              <text x="140" y="90" text-anchor="middle" fill="#000" font-size="10" class="ipod-artist">...</text>
+              <text x="140" y="100" text-anchor="middle" fill="#000" font-size="10" class="ipod-album">...</text>
+              <text x="140" y="110" text-anchor="middle" fill="#000" font-size="10" class="ipod-length">...</text>
+              <text x="140" y="120" text-anchor="middle" fill="#000" font-size="10" class="ipod-battery">Battery:
+                100%</text>
+              <foreignObject x="60" y="140" width="160" height="10">
+                <div xmlns="http://www.w3.org/1999/xhtml">
+                  <div class="progress-bar">
+                    <div class="progress-fill song-progress"></div>
+                  </div>
+                </div>
+              </foreignObject>
+              <path id="MENU"
+                d="M124.85 266V257.41H127.445L129.004 263.27L130.545 257.41H133.146V266H131.535V259.238L129.83 266H128.16L126.461 259.238V266H124.85ZM134.869 266V257.41H141.238V258.863H136.604V260.768H140.916V262.215H136.604V264.553H141.402V266H134.869ZM142.891 266V257.41H144.578L148.094 263.146V257.41H149.705V266H147.965L144.502 260.398V266H142.891ZM151.533 257.41H153.268V262.062C153.268 262.801 153.289 263.279 153.332 263.498C153.406 263.85 153.582 264.133 153.859 264.348C154.141 264.559 154.523 264.664 155.008 264.664C155.5 264.664 155.871 264.564 156.121 264.365C156.371 264.162 156.521 263.914 156.572 263.621C156.623 263.328 156.648 262.842 156.648 262.162V257.41H158.383V261.922C158.383 262.953 158.336 263.682 158.242 264.107C158.148 264.533 157.975 264.893 157.721 265.186C157.471 265.479 157.135 265.713 156.713 265.889C156.291 266.061 155.74 266.146 155.061 266.146C154.24 266.146 153.617 266.053 153.191 265.865C152.77 265.674 152.436 265.428 152.189 265.127C151.943 264.822 151.781 264.504 151.703 264.172C151.59 263.68 151.533 262.953 151.533 261.992V257.41Z"
+                fill="white" />
+              <rect id="Rectangle 6" x="149" y="403" width="2" height="9" fill="white" />
+              <rect id="Rectangle 9" x="145" y="403" width="2" height="9" fill="white" />
+              <path id="Polygon 1" d="M140 407.5L131 412.263V402.737L140 407.5Z" fill="white" />
+              <rect id="Rectangle 7" x="217" y="330" width="2" height="9" fill="white" />
+              <path id="Polygon 6" d="M211 334.5L202 339.263V329.737L211 334.5Z" fill="white" />
+              <path id="Polygon 7" d="M219 334.5L210 339.263V329.737L219 334.5Z" fill="white" />
+              <rect id="Rectangle 8" x="65" y="339" width="2" height="9" transform="rotate(180 65 339)" fill="white" />
+              <path id="Polygon 4" d="M71 334.5L80 329.737V339.263L71 334.5Z" fill="white" />
+              <path id="Polygon 5" d="M63 334.5L72 329.737V339.263L63 334.5Z" fill="white" />
+              <rect id="Rectangle 58" x="26" y="28" width="231" height="18" fill="url(#paint5_linear_55_2)" />
+              <circle class="skip-btn" cx="207" cy="335" r="27" fill="#D9D9D9" fill-opacity="0.01" />
+            </g>
+            <defs>
+              <linearGradient id="paint0_linear_55_2" x1="293.5" y1="269.5" x2="-2.45624e-05" y2="424"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="white" />
+                <stop offset="0.276528" stop-color="#FEFEFE" />
+                <stop offset="0.293269" stop-color="#F7F8FA" />
+                <stop offset="0.985577" stop-color="#DFE1ED" />
+              </linearGradient>
+              <linearGradient id="paint1_linear_55_2" x1="99.5" y1="260" x2="195.5" y2="409"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#D5DCE2" />
+                <stop offset="1" stop-color="#B9C0C8" />
+              </linearGradient>
+              <linearGradient id="paint2_linear_55_2" x1="93" y1="258" x2="194" y2="411.5"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F3FAFF" />
+                <stop offset="1" stop-color="#DEE5ED" />
+              </linearGradient>
+              <radialGradient id="paint3_radial_55_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(141.5 333.5) rotate(90) scale(31.5)">
+                <stop stop-color="#FBFCFE" />
+                <stop offset="1" stop-color="#F8FCFD" />
+              </radialGradient>
+              <linearGradient id="paint4_linear_55_2" x1="123" y1="309.5" x2="160" y2="361"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#E8EDF1" />
+                <stop offset="1" stop-color="#C9D0D8" />
+              </linearGradient>
+              <linearGradient id="paint5_linear_55_2" x1="26" y1="28" x2="26" y2="46" gradientUnits="userSpaceOnUse">
+                <stop offset="0.0224809" stop-color="#E2F0F9" />
+                <stop offset="0.0341707" stop-color="#DAEBFB" />
+                <stop offset="0.458053" stop-color="#C8E2F1" />
+                <stop offset="0.552885" stop-color="#B7D2E3" />
+                <stop offset="0.983507" stop-color="#92ACBD" />
+                <stop offset="0.990668" stop-color="#809AA9" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+
+          <svg id="fourth-gen" class="hidden" width="285" height="474" viewBox="0 0 285 474" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="iPod 4G">
+              <g id="Rectangle 1" filter="url(#filter0_di_32_2)">
+                <rect x="4" width="277" height="466" rx="23" fill="url(#paint0_linear_32_2)" />
+              </g>
+              <g id="Rectangle 3">
+                <rect x="48" y="28" width="190" height="155" rx="7" fill="black" />
+                <rect x="48" y="28" width="190" height="155" rx="7" fill="black" />
+                <rect x="48" y="28" width="190" height="155" rx="7" fill="black" />
+              </g>
+              <rect id="Rectangle 4" x="50" y="30" width="186" height="151" rx="4" fill="white" />
+              <circle id="Ellipse 32" cx="142.5" cy="319.5" r="96" fill="url(#paint1_radial_32_2)"
+                stroke="url(#paint2_linear_32_2)" />
+              <circle id="Ellipse 33" cx="142.5" cy="319.5" r="32" fill="url(#paint3_radial_32_2)" stroke="#B9B9BA" />
+              <path id="MENU"
+                d="M127.779 243V235.126H130.158L131.587 240.497L133 235.126H135.384V243H133.907V236.802L132.344 243H130.813L129.256 236.802V243H127.779ZM136.963 243V235.126H142.802V236.458H138.553V238.204H142.506V239.53H138.553V241.673H142.952V243H136.963ZM144.316 243V235.126H145.863L149.086 240.384V235.126H150.563V243H148.968L145.793 237.865V243H144.316ZM152.239 235.126H153.829V239.391C153.829 240.067 153.848 240.506 153.888 240.707C153.956 241.029 154.117 241.288 154.371 241.485C154.629 241.679 154.98 241.775 155.424 241.775C155.875 241.775 156.215 241.684 156.444 241.501C156.674 241.315 156.811 241.088 156.858 240.819C156.904 240.551 156.928 240.105 156.928 239.482V235.126H158.518V239.262C158.518 240.207 158.475 240.875 158.389 241.265C158.303 241.655 158.143 241.985 157.911 242.253C157.681 242.522 157.374 242.737 156.987 242.898C156.6 243.056 156.095 243.134 155.472 243.134C154.72 243.134 154.149 243.048 153.759 242.876C153.372 242.701 153.066 242.475 152.84 242.2C152.615 241.92 152.466 241.629 152.395 241.324C152.291 240.873 152.239 240.207 152.239 239.326V235.126Z"
+                fill="white" />
+              <rect id="Rectangle 6" x="150" y="398" width="2" height="8" fill="white" />
+              <rect id="Rectangle 9" x="146" y="398" width="2" height="8" fill="white" />
+              <path id="Polygon 1" d="M141 402L132.75 406.33V397.67L141 402Z" fill="white" />
+              <rect id="Rectangle 7" x="226" y="317" width="2" height="8" fill="white" />
+              <path id="Polygon 6" d="M221 321L212.75 325.33V316.67L221 321Z" fill="white" />
+              <path id="Polygon 7" d="M228 321L219.75 325.33V316.67L228 321Z" fill="white" />
+              <rect id="screen" x="51" y="31" width="184" height="149" rx="1" fill="#96B0D2" />
+              <text x="140" y="80" text-anchor="middle" fill="#000" font-size="12" class="ipod-title">Loading...</text>
+              <text x="140" y="90" text-anchor="middle" fill="#000" font-size="10" class="ipod-artist">...</text>
+              <text x="140" y="100" text-anchor="middle" fill="#000" font-size="10" class="ipod-album">...</text>
+              <text x="140" y="110" text-anchor="middle" fill="#000" font-size="10" class="ipod-length">...</text>
+              <text x="140" y="120" text-anchor="middle" fill="#000" font-size="10" class="ipod-battery">Battery:
+                100%</text>
+              <foreignObject x="60" y="140" width="160" height="10">
+                <div xmlns="http://www.w3.org/1999/xhtml">
+                  <div class="progress-bar">
+                    <div class="progress-fill song-progress"></div>
+                  </div>
+                </div>
+              </foreignObject>
+              <rect id="Rectangle 8" x="59" y="325" width="2" height="8" transform="rotate(180 59 325)" fill="white" />
+              <path id="Polygon 4" d="M64 321L72.25 316.67V325.33L64 321Z" fill="white" />
+              <path id="Polygon 5" d="M57 321L65.25 316.67V325.33L57 321Z" fill="white" />
+              <circle class="skip-btn" cx="215" cy="320" r="27" fill="#D9D9D9" fill-opacity="0.01" />
+
+            </g>
+            <defs>
+              <filter id="filter0_di_32_2" x="-7" y="0" width="292" height="474" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_32_2" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_32_2" result="shape" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feMorphology radius="9" operator="erode" in="SourceAlpha" result="effect2_innerShadow_32_2" />
+                <feOffset dx="-11" />
+                <feGaussianBlur stdDeviation="6" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.41 0" />
+                <feBlend mode="normal" in2="shape" result="effect2_innerShadow_32_2" />
+              </filter>
+              <linearGradient id="paint0_linear_32_2" x1="290.5" y1="233" x2="3.99998" y2="233"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6A7375" />
+                <stop offset="0.0508712" stop-color="#D5DADE" />
+                <stop offset="0.18" stop-color="#EAEBF0" />
+                <stop offset="0.64" stop-color="#E4E7E5" />
+                <stop offset="0.901932" stop-color="#F3F3F3" />
+                <stop offset="0.924468" stop-color="#F8F8FB" />
+                <stop offset="0.948025" stop-color="#F8F8FB" />
+                <stop offset="0.967527" stop-color="#D3D4D8" />
+              </linearGradient>
+              <radialGradient id="paint1_radial_32_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(142.5 319.5) rotate(90) scale(96.5)">
+                <stop stop-color="#D3D4D9" />
+                <stop offset="0.850962" stop-color="#D4D5D9" />
+                <stop offset="0.903846" stop-color="#D4D5D9" />
+                <stop offset="1" stop-color="#D5D6DA" />
+              </radialGradient>
+              <linearGradient id="paint2_linear_32_2" x1="75" y1="249" x2="193.5" y2="405"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FEFDFF" />
+                <stop offset="1" stop-color="#C0C1C6" />
+              </linearGradient>
+              <radialGradient id="paint3_radial_32_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(142.5 319.5) rotate(-164.181) scale(31.1809 32.6569)">
+                <stop stop-color="#F2F3F7" />
+                <stop offset="0.951923" stop-color="#EEEFF3" />
+                <stop offset="1" stop-color="white" />
+              </radialGradient>
+            </defs>
+          </svg>
+
+
+          <svg id="third-gen" width=" 285" height="474" viewBox="0 0 285 474" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="iPod">
+              <g id="Rectangle 1" filter="url(#filter0_di_1_59)">
+                <rect x="4" width="277" height="466" rx="23" fill="url(#paint0_linear_1_59)" />
+              </g>
+              <g id="Ellipse 1" filter="url(#filter1_di_1_59)">
+                <ellipse cx="146" cy="353" rx="87" ry="85" fill="#E0E2E0" />
+                <path
+                  d="M232 353C232 399.37 193.519 437 146 437C98.4815 437 60 399.37 60 353C60 306.63 98.4815 269 146 269C193.519 269 232 306.63 232 353Z"
+                  stroke="url(#paint1_linear_1_59)" stroke-width="2" />
+              </g>
+              <g id="Ellipse 2">
+                <g filter="url(#filter2_iii_1_59)">
+                  <ellipse cx="146" cy="352.5" rx="34" ry="33.5" fill="#E0E2E0" />
+                </g>
+                <path
+                  d="M179 352.5C179 370.435 164.239 385 146 385C127.761 385 113 370.435 113 352.5C113 334.565 127.761 320 146 320C164.239 320 179 334.565 179 352.5Z"
+                  stroke="url(#paint2_linear_1_59)" stroke-width="2" />
+              </g>
+              <g id="Ellipse 4" filter="url(#filter3_dii_1_59)">
+                <ellipse cx="174.5" cy="233" rx="26.5" ry="26" fill="#E0E2E0" />
+                <path
+                  d="M200 233C200 246.789 188.601 258 174.5 258C160.399 258 149 246.789 149 233C149 219.211 160.399 208 174.5 208C188.601 208 200 219.211 200 233Z"
+                  stroke="url(#paint3_linear_1_59)" stroke-width="2" />
+              </g>
+              <g id="Ellipse 5" filter="url(#filter4_dii_1_59)">
+                <ellipse cx="113.5" cy="233" rx="26.5" ry="26" fill="#E0E2E0" />
+                <path
+                  d="M139 233C139 246.789 127.601 258 113.5 258C99.3987 258 88 246.789 88 233C88 219.211 99.3987 208 113.5 208C127.601 208 139 219.211 139 233Z"
+                  stroke="url(#paint4_linear_1_59)" stroke-width="2" />
+              </g>
+              <g id="Ellipse 6" filter="url(#filter5_dii_1_59)">
+                <ellipse cx="52.5" cy="233" rx="26.5" ry="26" fill="#E0E2E0" />
+                <path
+                  d="M78 233C78 246.789 66.6013 258 52.5 258C38.3987 258 27 246.789 27 233C27 219.211 38.3987 208 52.5 208C66.6013 208 78 219.211 78 233Z"
+                  stroke="url(#paint5_linear_1_59)" stroke-width="2" />
+              </g>
+              <g id="Rectangle 3">
+                <rect x="48" y="28" width="190" height="155" rx="7" fill="black" />
+                <rect x="48" y="28" width="190" height="155" rx="7" fill="black" />
+                <rect x="48" y="28" width="190" height="155" rx="7" fill="black" />
+              </g>
+              <rect id="Rectangle 4" x="50" y="30" width="186" height="151" rx="4" fill="white" />
+              <path id="MENU"
+                d="M101.708 236V228.842H103.871L105.17 233.725L106.454 228.842H108.622V236H107.279V230.365L105.858 236H104.467L103.051 230.365V236H101.708ZM110.058 236V228.842H115.365V230.053H111.503V231.64H115.097V232.846H111.503V234.794H115.502V236H110.058ZM116.742 236V228.842H118.148L121.078 233.622V228.842H122.421V236H120.971L118.085 231.332V236H116.742ZM123.944 228.842H125.39V232.719C125.39 233.334 125.408 233.733 125.443 233.915C125.505 234.208 125.652 234.444 125.883 234.623C126.117 234.799 126.436 234.887 126.84 234.887C127.25 234.887 127.559 234.804 127.768 234.638C127.976 234.468 128.101 234.262 128.144 234.018C128.186 233.773 128.207 233.368 128.207 232.802V228.842H129.652V232.602C129.652 233.461 129.613 234.068 129.535 234.423C129.457 234.778 129.312 235.077 129.101 235.321C128.892 235.565 128.612 235.761 128.261 235.907C127.909 236.051 127.45 236.122 126.884 236.122C126.2 236.122 125.681 236.044 125.326 235.888C124.975 235.728 124.696 235.523 124.491 235.273C124.286 235.019 124.151 234.753 124.086 234.477C123.992 234.066 123.944 233.461 123.944 232.66V228.842Z"
+                fill="#E93822" />
+              <g id="Rectangle 6" filter="url(#filter6_dd_1_59)">
+                <rect x="183" y="229" width="2" height="7" fill="#E93822" />
+              </g>
+              <g id="Rectangle 9" filter="url(#filter7_dd_1_59)">
+                <rect x="179" y="229" width="2" height="7" fill="#E93822" />
+              </g>
+              <g id="Polygon 1" filter="url(#filter8_d_1_59)">
+                <path d="M175 232.5L167.5 236.397V228.603L175 232.5Z" fill="#E93822" />
+              </g>
+              <g class="skip-btn">
+                <g id="Ellipse 3" filter="url(#filter9_dii_1_59)">
+                  <ellipse cx="232.5" cy="233" rx="26.5" ry="26" fill="#E0E2E0" />
+                  <path
+                    d="M258 233C258 246.789 246.601 258 232.5 258C218.399 258 207 246.789 207 233C207 219.211 218.399 208 232.5 208C246.601 208 258 219.211 258 233Z"
+                    stroke="url(#paint6_linear_1_59)" stroke-width="2" />
+                </g>
+                <rect id="Rectangle 7" x="238" y="229" width="2" height="7" fill="#E93822" />
+                <g id="Polygon 6" filter="url(#filter10_d_1_59)">
+                  <path d="M234 232.5L226.5 236.397V228.603L234 232.5Z" fill="#E93822" />
+                </g>
+                <g id="Polygon 7" filter="url(#filter11_d_1_59)">
+                  <path d="M240 232.5L232.5 236.397V228.603L240 232.5Z" fill="#E93822" />
+                </g>
+              </g>
+              <rect id="Rectangle 8" x="50" y="236" width="2" height="7" transform="rotate(180 50 236)"
+                fill="#E93822" />
+              <path id="Polygon 4" d="M54 232.5L61.5 228.603V236.397L54 232.5Z" fill="#E93822" />
+              <path id="Polygon 5" d="M48 232.5L55.5 228.603V236.397L48 232.5Z" fill="#E93822" />
+
+              <rect id="screen" x="53" y="33" width="180" height="145" fill="#96B0D2" />
+              <text x="140" y="80" text-anchor="middle" fill="#000" font-size="12" class="ipod-title">Loading...</text>
+              <text x="140" y="90" text-anchor="middle" fill="#000" font-size="10" class="ipod-artist">...</text>
+              <text x="140" y="100" text-anchor="middle" fill="#000" font-size="10" class="ipod-album">...</text>
+              <text x="140" y="110" text-anchor="middle" fill="#000" font-size="10" class="ipod-length">...</text>
+              <text x="140" y="120" text-anchor="middle" fill="#000" font-size="10" class="ipod-battery">Battery:
+                100%</text>
+              <foreignObject x="60" y="140" width="160" height="10">
+                <div xmlns="http://www.w3.org/1999/xhtml">
+                  <div class="progress-bar">
+                    <div class="progress-fill song-progress"></div>
+                  </div>
+                </div>
+              </foreignObject>
+
+            </g>
+            <defs>
+              <filter id="filter0_di_1_59" x="-7" y="0" width="292" height="474" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_59" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_59" result="shape" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feMorphology radius="9" operator="erode" in="SourceAlpha" result="effect2_innerShadow_1_59" />
+                <feOffset dx="-11" />
+                <feGaussianBlur stdDeviation="6" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.41 0" />
+                <feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_59" />
+              </filter>
+              <filter id="filter1_di_1_59" x="58" y="264" width="182" height="178" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="3" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_59" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_59" result="shape" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="5" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_59" />
+              </filter>
+              <filter id="filter2_iii_1_59" x="109" y="319" width="78" height="66.9999" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="-3" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="shape" result="effect1_innerShadow_1_59" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feMorphology radius="5" operator="erode" in="SourceAlpha" result="effect2_innerShadow_1_59" />
+                <feOffset dx="7" />
+                <feGaussianBlur stdDeviation="3" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.65 0" />
+                <feBlend mode="normal" in2="effect1_innerShadow_1_59" result="effect2_innerShadow_1_59" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="5" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="effect2_innerShadow_1_59" result="effect3_innerShadow_1_59" />
+              </filter>
+              <filter id="filter3_dii_1_59" x="148" y="205.1" width="60" height="55.8" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="3" />
+                <feGaussianBlur stdDeviation="0.95" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_59" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_59" result="shape" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feMorphology radius="5" operator="erode" in="SourceAlpha" result="effect2_innerShadow_1_59" />
+                <feOffset dx="7" />
+                <feGaussianBlur stdDeviation="3" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.49 0" />
+                <feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_59" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="5" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" />
+                <feBlend mode="normal" in2="effect2_innerShadow_1_59" result="effect3_innerShadow_1_59" />
+              </filter>
+              <filter id="filter4_dii_1_59" x="87" y="205.1" width="60" height="55.8" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="3" />
+                <feGaussianBlur stdDeviation="0.95" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_59" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_59" result="shape" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feMorphology radius="5" operator="erode" in="SourceAlpha" result="effect2_innerShadow_1_59" />
+                <feOffset dx="7" />
+                <feGaussianBlur stdDeviation="3" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.49 0" />
+                <feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_59" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="5" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" />
+                <feBlend mode="normal" in2="effect2_innerShadow_1_59" result="effect3_innerShadow_1_59" />
+              </filter>
+              <filter id="filter5_dii_1_59" x="26" y="205.1" width="60" height="55.8" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="3" />
+                <feGaussianBlur stdDeviation="0.95" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_59" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_59" result="shape" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feMorphology radius="5" operator="erode" in="SourceAlpha" result="effect2_innerShadow_1_59" />
+                <feOffset dx="7" />
+                <feGaussianBlur stdDeviation="3" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.49 0" />
+                <feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_59" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="5" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" />
+                <feBlend mode="normal" in2="effect2_innerShadow_1_59" result="effect3_innerShadow_1_59" />
+              </filter>
+              <filter id="filter6_dd_1_59" x="179.2" y="225.2" width="9.6" height="14.6" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset />
+                <feGaussianBlur stdDeviation="1.9" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.913725 0 0 0 0 0.219608 0 0 0 0 0.133333 0 0 0 1 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_59" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset />
+                <feGaussianBlur stdDeviation="1.9" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.913725 0 0 0 0 0.219608 0 0 0 0 0.133333 0 0 0 1 0" />
+                <feBlend mode="normal" in2="effect1_dropShadow_1_59" result="effect2_dropShadow_1_59" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_1_59" result="shape" />
+              </filter>
+              <filter id="filter7_dd_1_59" x="175.2" y="225.2" width="9.6" height="14.6" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset />
+                <feGaussianBlur stdDeviation="1.9" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.913725 0 0 0 0 0.219608 0 0 0 0 0.133333 0 0 0 1 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_59" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset />
+                <feGaussianBlur stdDeviation="1.9" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.913725 0 0 0 0 0.219608 0 0 0 0 0.133333 0 0 0 1 0" />
+                <feBlend mode="normal" in2="effect1_dropShadow_1_59" result="effect2_dropShadow_1_59" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_1_59" result="shape" />
+              </filter>
+              <filter id="filter8_d_1_59" x="163.7" y="224.803" width="15.1" height="15.3942"
+                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset />
+                <feGaussianBlur stdDeviation="1.9" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.913725 0 0 0 0 0.219608 0 0 0 0 0.133333 0 0 0 1 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_59" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_59" result="shape" />
+              </filter>
+              <filter id="filter9_dii_1_59" x="206" y="205.1" width="60" height="55.8" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="3" />
+                <feGaussianBlur stdDeviation="0.95" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_59" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_59" result="shape" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feMorphology radius="5" operator="erode" in="SourceAlpha" result="effect2_innerShadow_1_59" />
+                <feOffset dx="7" />
+                <feGaussianBlur stdDeviation="3" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.49 0" />
+                <feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_59" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dx="5" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" />
+                <feBlend mode="normal" in2="effect2_innerShadow_1_59" result="effect3_innerShadow_1_59" />
+              </filter>
+              <filter id="filter10_d_1_59" x="222.7" y="224.803" width="15.1" height="15.3942"
+                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset />
+                <feGaussianBlur stdDeviation="1.9" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.913725 0 0 0 0 0.219608 0 0 0 0 0.133333 0 0 0 1 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_59" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_59" result="shape" />
+              </filter>
+              <filter id="filter11_d_1_59" x="228.7" y="224.803" width="15.1" height="15.3942"
+                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset />
+                <feGaussianBlur stdDeviation="1.9" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.913725 0 0 0 0 0.219608 0 0 0 0 0.133333 0 0 0 1 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_59" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_59" result="shape" />
+              </filter>
+              <linearGradient id="paint0_linear_1_59" x1="290.5" y1="233" x2="3.99998" y2="233"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6A7375" />
+                <stop offset="0.09" stop-color="#BFC2C2" />
+                <stop offset="0.18" stop-color="#D3D5D4" />
+                <stop offset="0.64" stop-color="#E4E7E5" />
+                <stop offset="0.893203" stop-color="#EBEDEB" />
+                <stop offset="0.940386" stop-color="#F8FAF7" />
+                <stop offset="0.958079" stop-color="#E8EAE8" />
+              </linearGradient>
+              <linearGradient id="paint1_linear_1_59" x1="63" y1="361" x2="233" y2="365" gradientUnits="userSpaceOnUse">
+                <stop offset="0.426019" stop-color="#F3F3F3" />
+                <stop offset="1" stop-color="#AFAFAF" />
+              </linearGradient>
+              <linearGradient id="paint2_linear_1_59" x1="113.563" y1="355.653" x2="180.001" y2="357.203"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0.426019" stop-color="#E8E8E8" />
+                <stop offset="1" stop-color="#AFAFAF" />
+              </linearGradient>
+              <linearGradient id="paint3_linear_1_59" x1="149.218" y1="235.447" x2="201" y2="236.66"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0.426019" stop-color="#E8E8E8" />
+                <stop offset="1" stop-color="#AFAFAF" />
+              </linearGradient>
+              <linearGradient id="paint4_linear_1_59" x1="88.2184" y1="235.447" x2="140" y2="236.66"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0.426019" stop-color="#E8E8E8" />
+                <stop offset="1" stop-color="#AFAFAF" />
+              </linearGradient>
+              <linearGradient id="paint5_linear_1_59" x1="27.2184" y1="235.447" x2="79.0002" y2="236.66"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0.426019" stop-color="#E8E8E8" />
+                <stop offset="1" stop-color="#AFAFAF" />
+              </linearGradient>
+              <linearGradient id="paint6_linear_1_59" x1="207.218" y1="235.447" x2="259" y2="236.66"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0.426019" stop-color="#E8E8E8" />
+                <stop offset="1" stop-color="#AFAFAF" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <button id="recharge-btn" class="btn">Recharge!</button>
+        </div>
+        <div id="timer">Timer: 0s</div>
+      </div>
+
+      <!-- Right Sidebar: Purchased Upgrades -->
+      <div class="sidebar right">
+        <h3>Current Upgrades</h3>
+        <p>iPod: <span id="ipod-level">1st Gen</span></p>
+        <p>Headphones: <span id="headphone-level">Basic</span></p>
+
+        <div id="icons" class="mini-ipod-icons"></div>
+
+      </div>
+
+      <!-- Shop Modal -->
+      <div id="shop-modal" class="modal hidden">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Shop</h2>
+          <div class="shop-section">
+            <h3>iPods</h3>
+            <div id="ipod-shop"></div>
+          </div>
+          <div class="shop-section">
+            <h3>Headphones</h3>
+            <div id="headphone-shop"></div>
+          </div>
+          <div class="shop-section">
+            <h3>MiniPods</h3>
+            <div id="miniipod-shop"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottombar">
+      <div>
+        <a class="link" href="http://scarlettscafe.lenowo.org/about.html" target="_blank">
+          <h2 class="bottombar__credits">By ScarlettPPC</h2>
+        </a>
+        <h2 class="bottombar__credits">Version 2.2</h2>
+      </div>
+      <div class="bottombar__buttons">
+        <button id="save-game" class="btn">Save</button>
+        <button id="load-game" class="btn">Load</button>
+        <button id="autosave-game" class="btn">Autosave</button>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+  </div>
+</body>
+
+</html>
